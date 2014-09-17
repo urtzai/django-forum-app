@@ -1,0 +1,51 @@
+{% load url from future %}
+
+<!-- Threads  -->
+<a id="new_topic" class="button" href="{% url 'new-topic' pk %}">Start New Topic</a>
+<br />
+<br />
+
+<div id="list">
+<table border="0" cellpadding="4" width="100%">
+    <tr>
+        <td>Topics</td>
+        <td>Replies</td>
+        <td>Last post</td>
+        <td></td>
+    </tr>
+
+    {% for topic in topics.object_list %}
+    <tr>
+        <td {% if forloop.last %}class="last"{% endif %}>
+        <div class="title"> <a href="{% url 'topic-detail' topic.pk %}">{{ topic.title }}</a>
+            </div></td>
+        <td {% if forloop.last %}class="last"{% endif %}>{{ topic.num_replies }}</td>
+        <td {% if forloop.last %}class="last"{% endif %}>
+            {{ topic.last_post.short|linebreaksbr }}</td>
+        <td {% if forloop.last %}class="last"{% endif %}>
+            <a class="button" href="{% url 'topic-detail' topic.pk %}">VIEW</a>
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+</div>
+
+<!-- Next/Prev page links  -->
+{% if topics.object_list and topics.paginator.num_pages > 1 %}
+<div class="pagination">
+    <span class="step-links">
+        {% if topics.has_previous %}
+            <a href= "?page={{ topics.previous_page_number }}">previous &lt;&lt; </a>
+        {% endif %}
+
+        <span class="current">
+            &nbsp;Page {{ topics.number }} of {{ topics.paginator.num_pages }}
+        </span>
+
+        {% if topics.has_next %}
+            <a href="?page={{ topics.next_page_number }}"> &gt;&gt; next</a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
