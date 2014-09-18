@@ -2,7 +2,8 @@ from django.contrib import admin
 from django_simple_forum.models import Forum, Topic, Post, ProfaneWord
 
 class ForumAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["title", "slug", "creator", "created"]
+    prepopulated_fields = {"slug": ("title",)}
 
 class TopicAdmin(admin.ModelAdmin):
     list_display = ["title", "forum", "creator", "created"]
