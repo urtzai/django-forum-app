@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from gamerauntsia.gamer.models import GamerUser as User
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 

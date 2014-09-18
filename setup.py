@@ -3,7 +3,7 @@ import sys, os
 
 version = '0.01'
 
-setup(name='django-simple-forum',
+setup(name='django_simple_forum',
       version=version,
       description="Django simple forum",
       long_description="""\
