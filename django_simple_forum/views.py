@@ -13,7 +13,8 @@ from django.core.context_processors import csrf
 from django_simple_forum.models import Forum, Topic, Post
 from django_simple_forum.forms import TopicForm, PostForm
 
-from guest.decorators import guest_allowed, login_required
+#from guest.decorators import guest_allowed, login_required
+from django.contrib.auth.decorators import login_required
 
 from django.template import RequestContext
 
