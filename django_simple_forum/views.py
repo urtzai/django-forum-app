@@ -78,6 +78,7 @@ def post_reply(request, slug, topic_id):
     topic = Topic.objects.get(pk=topic_id)
     
     if request.method == 'POST':
+        quote = request.POST.get('quote', '')
         form = PostForm(request.POST)
 
         if form.is_valid():
