@@ -21,7 +21,7 @@ class Forum(models.Model):
     icon = models.ForeignKey(Photo,null=True,blank=True)
     category = models.ForeignKey(Category)
     updated = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
     creator = models.ForeignKey(User, blank=True, null=True)
 
     def __unicode__(self):
@@ -50,7 +50,7 @@ class Topic(models.Model):
     description = models.TextField(max_length=10000, blank=True, null=True)
     forum = models.ForeignKey(Forum)
     block_top = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
     creator = models.ForeignKey(User, blank=True, null=True)
     updated = models.DateTimeField(auto_now=True)
     closed = models.BooleanField(blank=True, default=False)
