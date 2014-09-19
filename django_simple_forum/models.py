@@ -3,10 +3,18 @@ from gamerauntsia.gamer.models import GamerUser as User
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
+class Category(models.Model):
+    order = models.IntegerField()
+    title = models.CharField(max_length=60)
+    
+    def __unicode__(self):
+        return self.title
+
 class Forum(models.Model):
     title = models.CharField(max_length=60)
     slug = slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, default='')
+    category = models.ForeignKey(Category)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now=True)
     creator = models.ForeignKey(User, blank=True, null=True)
