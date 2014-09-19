@@ -97,6 +97,7 @@ def post_reply(request, slug, topic_id):
             'form': form,
             'topic': topic,
             'forum': forum,
+            'quote': quote,
         }, context_instance=RequestContext(request))
 
 @login_required
