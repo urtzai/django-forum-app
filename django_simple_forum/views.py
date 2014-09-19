@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator
 from django.core.context_processors import csrf
 
-from django_simple_forum.models import Forum, Topic, Post
+from django_simple_forum.models import Category, Forum, Topic, Post
 from django_simple_forum.forms import TopicForm, PostForm
 
 #from guest.decorators import guest_allowed, login_required
@@ -22,8 +22,8 @@ from settings import *
 
 def index(request):
     """Main listing."""
-    forums = Forum.objects.all()
-    return render_to_response("django_simple_forum/list.html", {'forums': forums, 
+    categories = Category.objects.all().order_by('order')
+    return render_to_response("django_simple_forum/list.html", {'categories': categories, 
                                 'user': request.user}, 
                                 context_instance=RequestContext(request))
 
