@@ -12,7 +12,7 @@ class Category(models.Model):
         return Forum.objects.filter(block_top=True,category=self.id)
     
     def get_forums(self):
-        return Forum.objects.filter(category=self.id)
+        return Forum.objects.filter(block_top=False,category=self.id)
     
     def __unicode__(self):
         return self.title
