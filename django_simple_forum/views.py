@@ -71,7 +71,7 @@ def post_reply(request, slug, topic_id):
     quote = request.GET.get('quote', '')
     author = request.GET.get('author', '')
     if quote:
-        quote = '<blockquote><p>'+quote+'...</p><footer>'+author+'</footer></blockquote><br/><br/>'
+        quote = '<blockquote>'+quote+'<footer>'+author+'</footer></blockquote>'
     
     form = PostForm()
     forum = get_object_or_404(Forum, slug=slug)
