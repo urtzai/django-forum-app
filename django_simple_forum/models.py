@@ -7,6 +7,9 @@ class Category(models.Model):
     order = models.IntegerField()
     title = models.CharField(max_length=60)
     
+    def get_forums(self):
+        return Forum.objects.filter(category=self.id)
+    
     def __unicode__(self):
         return self.title
 
@@ -21,6 +24,11 @@ class Forum(models.Model):
 
     def __unicode__(self):
         return self.title
+        
+    def get_summary(self):
+    	if len(self.description) > 100:
+    	    return self.description[:100]+'...'
+        return self.description
 
     def num_posts(self):
         return sum([t.num_posts() for t in self.topic_set.all()])
