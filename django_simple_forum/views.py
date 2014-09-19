@@ -86,6 +86,10 @@ def post_reply(request, slug, topic_id):
             post.save()
 
             return HttpResponseRedirect(reverse('topic-detail', args=(slug,topic.id, )))
+            
+    quote = request.GET.get('quote', '')
+    if quote:
+        form['body'] = '<blockquote>'+quote+'</blockquote>'
 
     return render_to_response('django_simple_forum/reply.html', {
             'form': form,
