@@ -71,9 +71,9 @@ def post_reply(request, slug, topic_id):
     quote = request.GET.get('quote', '')
     author = request.GET.get('author', '')
     if quote:
-        form = PostForm(initial={'body': '<blockquote><p>'+quote+'...</p><footer>'+author+'</footer></blockquote>'})
-    else:
-        form = PostForm()
+        quote = '<blockquote><p>'+quote+'...</p><footer>'+author+'</footer></blockquote><br/><br/>'
+    
+    form = PostForm()
     forum = get_object_or_404(Forum, slug=slug)
     topic = Topic.objects.get(pk=topic_id)
     
@@ -85,7 +85,7 @@ def post_reply(request, slug, topic_id):
             post = Post()
             post.topic = topic
             post.title = form.cleaned_data['title']
-            post.body = form.cleaned_data['body']
+            post.body = quote + form.cleaned_data['body']
             post.creator = request.user
             post.user_ip = request.META['REMOTE_ADDR']
 
