@@ -7,7 +7,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 
 from django.core.urlresolvers import reverse
-from django.core.paginator import Paginator
 from django.core.context_processors import csrf
 
 from django_simple_forum.models import Category, Forum, Topic, Post
@@ -33,23 +32,10 @@ def add_csrf(request, ** kwargs):
     d.update(csrf(request))
     return d
 
-def mk_paginator(request, items, num_items):
-    """Create and return a paginator."""
-    paginator = Paginator(items, num_items)
-    try: page = int(request.GET.get("page", '1'))
-    except ValueError: page = 1
-
-    try:
-        items = paginator.page(page)
-    except (InvalidPage, EmptyPage):
-        items = paginator.page(paginator.num_pages)
-    return items
-
 def forum(request, slug):
     """Listing of topics in a forum."""
     top_topics = Topic.objects.filter(block_top=True,forum__slug=slug).order_by("-created")
     topics = Topic.objects.filter(block_top=False,forum__slug=slug).order_by("-created")
-    topics = mk_paginator(request, topics, DJANGO_SIMPLE_FORUM_TOPICS_PER_PAGE)
 
     forum = get_object_or_404(Forum, slug=slug)
 
@@ -60,7 +46,7 @@ def topic(request, slug, topic_id):
     """Listing of posts in a topic."""
     forum = get_object_or_404(Forum, slug=slug)
     posts = Post.objects.filter(topic=topic_id).order_by("created")
-    posts = mk_paginator(request, posts, DJANGO_SIMPLE_FORUM_REPLIES_PER_PAGE)
+    
     topic = Topic.objects.get(pk=topic_id)
     return render_to_response("django_simple_forum/topic.html", add_csrf(request, forum=forum, posts=posts, pk=topic_id,
         topic=topic), context_instance=RequestContext(request))
