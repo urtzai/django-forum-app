@@ -1,5 +1,8 @@
 from django.contrib import admin
-from django_simple_forum.models import Forum, Topic, Post, ProfaneWord
+from django_simple_forum.models import Category, Forum, Topic, Post, ProfaneWord
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ["order", "title"]
 
 class ForumAdmin(admin.ModelAdmin):
     list_display = ["title", "slug", "creator", "created"]
@@ -16,6 +19,7 @@ class PostAdmin(admin.ModelAdmin):
 class ProfaneWordAdmin(admin.ModelAdmin):
     pass
 
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Forum, ForumAdmin)
 admin.site.register(Topic, TopicAdmin)
 admin.site.register(Post, PostAdmin)
