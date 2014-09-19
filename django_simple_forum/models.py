@@ -1,5 +1,6 @@
 from django.db import models
 from gamerauntsia.gamer.models import GamerUser as User
+from photologue.models import Photo
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
@@ -17,6 +18,7 @@ class Forum(models.Model):
     title = models.CharField(max_length=60)
     slug = slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, default='')
+    icon = models.ForeignKey(Photo,null=True,blank=True)
     category = models.ForeignKey(Category)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now=True)
