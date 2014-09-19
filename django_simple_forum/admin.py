@@ -5,11 +5,11 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ["order", "title"]
 
 class ForumAdmin(admin.ModelAdmin):
-    list_display = ["title", "slug", "creator", "created"]
+    list_display = ["title", "slug", "category", "creator", "created"]
     prepopulated_fields = {"slug": ("title",)}
 
 class TopicAdmin(admin.ModelAdmin):
-    list_display = ["title", "forum", "creator", "created"]
+    list_display = ["title", "forum", "creator", "created","block_top"]
     list_filter = ["forum", "creator"]
 
 class PostAdmin(admin.ModelAdmin):
