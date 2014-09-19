@@ -8,11 +8,8 @@ class Category(models.Model):
     order = models.IntegerField()
     title = models.CharField(max_length=60)
     
-    def get_top_forums(self):
-        return Forum.objects.filter(block_top=True,category=self.id)
-    
     def get_forums(self):
-        return Forum.objects.filter(block_top=False,category=self.id)
+        return Forum.objects.filter(category=self.id)
     
     def __unicode__(self):
         return self.title
