@@ -63,7 +63,7 @@ class Topic(models.Model):
 
     def last_post(self):
         if self.post_set.count():
-            return self.post_set.order_by("created")[0]
+            return self.post_set.order_by("-created")[0]
 
     def __unicode__(self):
         return unicode(self.creator) + " - " + self.title
