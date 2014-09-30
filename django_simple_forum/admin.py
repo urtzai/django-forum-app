@@ -9,8 +9,8 @@ class ForumAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
 class TopicAdmin(admin.ModelAdmin):
-    list_display = ["title", "forum", "creator", "created","block_top"]
-    list_filter = ["forum", "creator"]
+    list_display = ["title", "creator", "created","block_top"]
+    list_filter = ["creator",]
 
 class PostAdmin(admin.ModelAdmin):
     search_fields = ["title", "creator"]
