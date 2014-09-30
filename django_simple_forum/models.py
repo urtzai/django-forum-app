@@ -81,10 +81,10 @@ class Post(models.Model):
         return u"%s - %s - %s" % (self.creator, self.topic, self.title)
 
     def short(self):
-        return u"%s - %s\n%s" % (self.creator, self.title, self.created.strftime("%b %d, %I:%M %p"))
+        return u"%s - %s\n%s" % (self.creator, self.title, self.created.strftime("%Y-%m-%d %H:%M"))
         
     def supershort(self):
-        return u"%s: %s" % (self.creator, self.created.strftime("%b %d, %I:%M %p"))
+        return u"%s: %s" % (self.creator, self.created.strftime("%Y-%m-%d %H:%M"))
 
     short.allow_tags = True
 
