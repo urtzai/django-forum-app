@@ -102,7 +102,7 @@ def new_topic(request, slug):
             topic = Topic()
             topic.title = form.cleaned_data['title']
             topic.description = form.cleaned_data['description']
-            topic.forum = forum
+            topic.forums.add(forum)
             topic.creator = request.user
 
             topic.save()
