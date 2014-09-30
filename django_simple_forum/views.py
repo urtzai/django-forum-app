@@ -102,10 +102,10 @@ def new_topic(request, slug):
             topic = Topic()
             topic.title = form.cleaned_data['title']
             topic.description = form.cleaned_data['description']
-            topic.forums.add(forum)
             topic.creator = request.user
 
             topic.save()
+            topic.forums.add(forum)
 
             return HttpResponseRedirect(reverse('forum-detail', args=(slug, )))
 
