@@ -34,8 +34,8 @@ def add_csrf(request, ** kwargs):
 
 def forum(request, slug):
     """Listing of topics in a forum."""
-    top_topics = Topic.objects.filter(block_top=True,forum__slug=slug).order_by("-created")
-    topics = Topic.objects.filter(block_top=False,forum__slug=slug).order_by("-created")
+    top_topics = Topic.objects.filter(block_top=True,forums__slug=slug).order_by("-created")
+    topics = Topic.objects.filter(block_top=False,forums__slug=slug).order_by("-created")
     
     topics = list(top_topics) + list(topics)
 
