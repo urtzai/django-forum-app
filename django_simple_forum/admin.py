@@ -11,6 +11,7 @@ class ForumAdmin(admin.ModelAdmin):
 class TopicAdmin(admin.ModelAdmin):
     list_display = ["title", "creator", "created","block_top"]
     list_filter = ["creator",]
+    filter_horizontal = ('forums',)
 
 class PostAdmin(admin.ModelAdmin):
     search_fields = ["title", "creator"]
