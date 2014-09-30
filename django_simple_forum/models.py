@@ -28,8 +28,8 @@ class Forum(models.Model):
         return self.title
         
     def get_summary(self):
-    	if len(self.description) > 100:
-    	    return self.description[:100]+'...'
+    	if len(self.description) > 50:
+    	    return self.description[:50]+'...'
         return self.description
 
     def num_posts(self):
