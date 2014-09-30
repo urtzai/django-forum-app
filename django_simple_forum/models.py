@@ -48,7 +48,7 @@ class Forum(models.Model):
 class Topic(models.Model):
     title = models.CharField(max_length=60)
     description = models.TextField(max_length=10000, blank=True, null=True)
-    forum = models.ForeignKey(Forum)
+    #forum = models.ForeignKey(Forum)
     forums = models.ManyToManyField(Forum)
     block_top = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
