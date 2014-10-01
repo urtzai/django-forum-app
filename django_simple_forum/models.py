@@ -34,6 +34,9 @@ class Forum(models.Model):
 
     def num_posts(self):
         return sum([t.num_posts() for t in self.topic_set.all()])
+        
+    def num_topics(self):
+        return self.topic_set.all().count()
 
     def last_post(self):
         if self.topic_set.count():
