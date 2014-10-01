@@ -10,7 +10,7 @@ class TopicForm(forms.ModelForm):
 
     class Meta():
         model = Topic
-        exclude = ('creator','updated', 'created', 'closed', 'forum', 'block_top')
+        exclude = ('creator','updated', 'created', 'closed', 'forums', 'block_top')
 
 
 class PostForm(forms.ModelForm):
