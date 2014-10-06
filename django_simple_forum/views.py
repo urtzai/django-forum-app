@@ -106,6 +106,7 @@ def new_topic(request, slug):
 
             topic.save()
             topic.forums.add(forum)
+            topic.save()
 
             return HttpResponseRedirect(reverse('forum-detail', args=(slug, )))
 
