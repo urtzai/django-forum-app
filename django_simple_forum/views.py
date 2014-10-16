@@ -68,7 +68,7 @@ def post_reply(request, slug, topic_id):
     if topic.last_post():
         form_title = 'Re: ' + topic.last_post().title.replace('Re: ','')
     
-    default_data = {'title': form_title,'body':''}
+    default_data = {'title': form_title,'body':'Zure erantzuna...'}
     form = PostForm(default_data)
     
     if request.method == 'POST':
