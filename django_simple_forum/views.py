@@ -65,7 +65,7 @@ def post_reply(request, slug, topic_id):
     topic = Topic.objects.get(pk=topic_id)
     
     form_title = ''
-    if topic.last_post()
+    if topic.last_post():
         form_title = 'Re: ' + topic.last_post().title.replace('Re: ','')
     
     default_data = {'title': form_title,}
