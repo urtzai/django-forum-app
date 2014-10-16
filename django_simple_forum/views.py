@@ -61,9 +61,15 @@ def post_reply(request, slug, topic_id):
     if quote:
         quote = '<blockquote>'+quote+'<footer>'+author+'</footer></blockquote>'
     
-    form = PostForm()
     forum = get_object_or_404(Forum, slug=slug)
     topic = Topic.objects.get(pk=topic_id)
+    
+    form_title = ''
+    if topic.last_post()
+        form_title = 'Re: ' + topic.last_post().title.replace('Re: ','')
+    
+    default_data = {'title': form_title,}
+    form = PostForm(default_data)
     
     if request.method == 'POST':
         quote = request.POST.get('quote', '')
