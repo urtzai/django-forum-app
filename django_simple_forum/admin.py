@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django_simple_forum.models import Category, Forum, Topic, Post, ProfaneWord
+from django_simple_forum.forms import PostAdminForm
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ["order", "title"]
@@ -16,6 +17,7 @@ class TopicAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
     search_fields = ["title", "creator"]
     list_display = ["title", "topic", "creator", "created"]
+    form = PostAdminForm
 
 class ProfaneWordAdmin(admin.ModelAdmin):
     pass
