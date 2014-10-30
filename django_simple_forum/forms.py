@@ -4,6 +4,13 @@ from tinymce.widgets import TinyMCE
 from django.utils.translation import ugettext as _
 from settings import *
 
+class PostAdminForm(forms.ModelForm):
+    body = forms.CharField(widget=TinyMCE(
+               attrs={'cols': 80, 'rows': 30,},mce_attrs=settings.TINYMCE_BODY_CONFIG))
+    class Meta:
+        model = Post
+
+
 class TopicForm(forms.ModelForm):
 
     title = forms.CharField(max_length=60, required=True)
