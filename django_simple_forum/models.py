@@ -93,6 +93,9 @@ class Post(models.Model):
         
     def supershort(self):
         return u"%s: %s" % (self.creator, self.created.strftime("%Y-%m-%d %H:%M"))
+        
+    def get_absolute_url(self):
+        return u'/%s/?page=%d#%d' % (self.topic.id, self.get_page(),self.id)
 
     short.allow_tags = True
 
