@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from gamerauntsia.gamer.models import GamerUser as User
 from photologue.models import Photo
 from django.contrib import admin
@@ -83,6 +84,9 @@ class Post(models.Model):
 
     def __unicode__(self):
         return u"%s - %s - %s" % (self.creator, self.topic, self.title)
+
+    def get_page(self):
+        return self._default_manager.filter(creator__id=self.creator_id).filter(created__gt=self.created).count() / settings.POSTS_PER_PAGE + 1
 
     def short(self):
         return u"%s - %s\n%s" % (self.creator, self.title, self.created.strftime("%Y-%m-%d %H:%M"))
