@@ -86,7 +86,7 @@ class Post(models.Model):
         return u"%s - %s - %s" % (self.creator, self.topic, self.title)
 
     def get_post_num(self):
-        return self._default_manager.filter(topic__id=post.topic_id).filter(created__lt=post.created).count()
+        return self._default_manager.filter(topic__id=self.topic_id).filter(created__lt=self.created).count()
 
     def get_page(self):
         return self.get_post_num() / settings.POSTS_PER_PAGE + 1
