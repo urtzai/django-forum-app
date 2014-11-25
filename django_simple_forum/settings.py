@@ -1,5 +1,6 @@
 from django.conf import settings
 
+POSTS_PER_PAGE = 10
 DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS', True)
 TINYMCE_BODY_CONFIG = {
     #mode : "textareas",
