@@ -22,8 +22,8 @@ from settings import *
 def index(request):
     """Main listing."""
     categories = Category.objects.all().order_by('order')
-    return render_to_response("django_simple_forum/list.html", {'categories': categories, 
-                                'user': request.user}, 
+    return render_to_response("django_simple_forum/list.html", {'categories': categories,
+                                'user': request.user},
                                 context_instance=RequestContext(request))
 
 
@@ -36,7 +36,7 @@ def forum(request, slug):
     """Listing of topics in a forum."""
     top_topics = Topic.objects.filter(block_top=True,forums__slug=slug).order_by("-created")
     topics = Topic.objects.filter(block_top=False,forums__slug=slug).order_by("-created")
-    
+
     topics = list(top_topics) + list(topics)
 
     forum = get_object_or_404(Forum, slug=slug)
@@ -48,29 +48,30 @@ def topic(request, slug, topic_id):
     """Listing of posts in a topic."""
     forum = get_object_or_404(Forum, slug=slug)
     posts = Post.objects.filter(topic=topic_id).order_by("created")
-    
+
     topic = Topic.objects.get(pk=topic_id)
     return render_to_response("django_simple_forum/topic.html", add_csrf(request, forum=forum, posts=posts, pk=topic_id,
         topic=topic), context_instance=RequestContext(request))
 
 @login_required
 def post_reply(request, slug, topic_id):
-    
+
     quote = request.GET.get('quote', '')
     author = request.GET.get('author', '')
     if quote:
         quote = '<blockquote>'+quote+'<footer>'+author+'</footer></blockquote>'
-    
+
     forum = get_object_or_404(Forum, slug=slug)
+    posts = Post.objects.filter(topic=topic_id).order_by("created").reverse()[:3]
     topic = Topic.objects.get(pk=topic_id)
-    
+
     form_title = ''
     if topic.last_post():
         form_title = 'Re: ' + topic.last_post().title.replace('Re: ','')
-    
+
     default_data = {'title': form_title,'body':'Zure erantzuna...'}
     form = PostForm(default_data)
-    
+
     if request.method == 'POST':
         quote = request.POST.get('quote', '')
         form = PostForm(request.POST)
@@ -92,6 +93,7 @@ def post_reply(request, slug, topic_id):
             'form': form,
             'topic': topic,
             'forum': forum,
+            'posts': posts,
             'quote': quote,
         }, context_instance=RequestContext(request))
 
@@ -99,7 +101,7 @@ def post_reply(request, slug, topic_id):
 def new_topic(request, slug):
     form = TopicForm()
     forum = get_object_or_404(Forum, slug=slug)
-    
+
     if request.method == 'POST':
         form = TopicForm(request.POST)
 
