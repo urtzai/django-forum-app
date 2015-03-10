@@ -49,7 +49,7 @@ def topic(request, slug, topic_id):
     forum = get_object_or_404(Forum, slug=slug)
     posts = Post.objects.filter(topic=topic_id).order_by("created")
     try:
-        user = request.user
+        user = request.user.id
     except:
         user = None
 
