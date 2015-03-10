@@ -86,11 +86,11 @@ class Topic(models.Model):
     def sum_visits(self,user_id=None):
         if user_id:
             if self.user_lst:
-                lst = list(self.user_lst)
-                if user_id not in lst:
-                    self.user_lst = str(lst.append(user_id))
+                lst = self.user_lst.split(',')
+                if str(user_id) not in lst:
+                    self.user_lst += ','+str(user_id)
             else:
-                self.user_lst = '['+str(user_id)+']'
+                self.user_lst = str(user_id)
         self.visits += 1
         self.save()
 
