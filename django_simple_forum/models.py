@@ -37,6 +37,12 @@ class Forum(models.Model):
     	if len(self.description) > 50:
     	    return self.description[:50]+'...'
         return self.description
+        
+    def get_visits(self):
+        vs = 0
+        for t in self.topic_set.all():
+            vs += t.visits
+        return vs
 
     def num_posts(self):
         return sum([t.num_posts() for t in self.topic_set.all()])
@@ -64,6 +70,8 @@ class Topic(models.Model):
     creator = models.ForeignKey(User, blank=True, null=True)
     updated = models.DateTimeField(auto_now=True)
     closed = models.BooleanField(blank=True, default=False)
+    visits = models.Interger(default=0)
+    user_lst = models.TextField(default="[]",blank=True, null=True)
 
     def num_posts(self):
         return self.post_set.count()
