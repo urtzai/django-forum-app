@@ -48,7 +48,10 @@ def topic(request, slug, topic_id):
     """Listing of posts in a topic."""
     forum = get_object_or_404(Forum, slug=slug)
     posts = Post.objects.filter(topic=topic_id).order_by("created")
-    user = request.POST.get('user',None)
+    try:
+        user = request.user
+    except:
+        user = None
 
     topic = Topic.objects.get(pk=topic_id)
     topic.sum_visits(user)
