@@ -85,7 +85,7 @@ class Topic(models.Model):
             
     def sum_visits(self,user_id=None):
         if user_id:
-            if list(self.user_lst):
+            if self.user_lst:
                 lst = list(self.user_lst)
                 if user_id not in lst:
                     self.user_lst = lst.append(user_id)
