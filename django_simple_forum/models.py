@@ -44,10 +44,10 @@ class Forum(models.Model):
             vs += t.visits
         return vs
         
-    def has_seen(self,user=None):
-        if user:
+    def has_seen(self,user_id=None):
+        if user_id:
             for t in self.topic_set.all():
-                if not t.has_seen(user):
+                if not t.has_seen(user_id):
                     return False
         return True
 
@@ -101,10 +101,10 @@ class Topic(models.Model):
         self.visits += 1
         self.save()
         
-    def has_seen(self,user=None):
-        if user:
+    def has_seen(self,user_id=None):
+        if user_id:
             lst = self.user_lst.split(',')
-            if lst and str(user.id) in lst:
+            if lst and str(user_id) in lst:
                 return True
             return False
         return True
