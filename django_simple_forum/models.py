@@ -70,7 +70,7 @@ class Topic(models.Model):
     creator = models.ForeignKey(User, blank=True, null=True)
     updated = models.DateTimeField(auto_now=True)
     closed = models.BooleanField(blank=True, default=False)
-    visits = models.Interger(default=0)
+    visits = models.IntergerField(default=0)
     user_lst = models.TextField(blank=True, null=True)
 
     def num_posts(self):
