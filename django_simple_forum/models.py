@@ -104,7 +104,7 @@ class Topic(models.Model):
     def has_seen(self,user=None):
         if user:
             lst = self.user_lst.split(',')
-            if self.user_lst and str(user.id) in lst:
+            if lst and str(user.id) in lst:
                 return True
             return False
         return True
