@@ -83,7 +83,14 @@ class Topic(models.Model):
         if self.post_set.count():
             return self.post_set.order_by("-created")[0]
             
-    def sum_visits(self):
+    def sum_visits(self,user_id=None):
+        if user_id:
+            if list(self.user_lst):
+                lst = list(self.user_lst)
+                if user_id not in lst:
+                    self.user_lst = lst.append(user_id)
+            else:
+                self.user_lst = '[]'
         self.visits += 1
         self.save()
 
@@ -116,6 +123,11 @@ class Post(models.Model):
         
     def get_absolute_url(self):
         return u'/%s/?page=%d#%d' % (self.topic.id, self.get_page(),self.id)
+        
+    def save(self, *args, **kwargs):
+        self.topic.user_lst = '[]'
+        self.topic.save()
+        super(Post, self).save(*args, **kwargs)
 
     short.allow_tags = True
 
