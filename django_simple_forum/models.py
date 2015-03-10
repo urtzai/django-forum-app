@@ -82,6 +82,10 @@ class Topic(models.Model):
     def last_post(self):
         if self.post_set.count():
             return self.post_set.order_by("-created")[0]
+            
+    def sum_visits(self):
+        self.visits += 1
+        self.save()
 
     def __unicode__(self):
         return unicode(self.creator) + " - " + self.title
