@@ -50,6 +50,7 @@ def topic(request, slug, topic_id):
     posts = Post.objects.filter(topic=topic_id).order_by("created")
 
     topic = Topic.objects.get(pk=topic_id)
+    topic.sum_visits()
     return render_to_response("django_simple_forum/topic.html", add_csrf(request, forum=forum, posts=posts, pk=topic_id,
         topic=topic), context_instance=RequestContext(request))
 
