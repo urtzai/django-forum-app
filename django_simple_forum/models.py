@@ -45,7 +45,7 @@ class Forum(models.Model):
         return vs
         
     def has_seen(self,user=None):
-        if user:
+        if user or user_id != 'None':
             for t in self.topic_set.all():
                 if not t.has_seen(user):
                     return False
@@ -103,7 +103,8 @@ class Topic(models.Model):
         
     def has_seen(self,user=None):
         if user:
-            if self.user_lst and user.id in self.user_lst:
+            lst = self.user_lst.split(',')
+            if self.user_lst and str(user.id) in lst:
                 return True
             return False
         return True
