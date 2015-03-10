@@ -71,7 +71,7 @@ class Topic(models.Model):
     updated = models.DateTimeField(auto_now=True)
     closed = models.BooleanField(blank=True, default=False)
     visits = models.Interger(default=0)
-    user_lst = models.TextField(default="[]",blank=True, null=True)
+    user_lst = models.TextField(blank=True, null=True)
 
     def num_posts(self):
         return self.post_set.count()
