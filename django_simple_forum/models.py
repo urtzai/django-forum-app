@@ -103,7 +103,7 @@ class Topic(models.Model):
         
     def has_seen(self,user=None):
         if user:
-            if user.id in self.user_lst:
+            if self.user_lst and user.id in self.user_lst:
                 return True
             return False
         return True
