@@ -88,9 +88,9 @@ class Topic(models.Model):
             if self.user_lst:
                 lst = list(self.user_lst)
                 if user_id not in lst:
-                    self.user_lst = lst.append(user_id)
+                    self.user_lst = str(lst.append(user_id))
             else:
-                self.user_lst = '[]'
+                self.user_lst = '['+str(user_id)+']'
         self.visits += 1
         self.save()
 
