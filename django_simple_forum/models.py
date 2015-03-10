@@ -43,6 +43,13 @@ class Forum(models.Model):
         for t in self.topic_set.all():
             vs += t.visits
         return vs
+        
+    def has_seen(self,user=None):
+        if user:
+            for t in self.topic_set.all():
+                if not t.has_seen(user):
+                    return False
+        return True
 
     def num_posts(self):
         return sum([t.num_posts() for t in self.topic_set.all()])
@@ -93,6 +100,13 @@ class Topic(models.Model):
                 self.user_lst = str(user_id)
         self.visits += 1
         self.save()
+        
+    def has_seen(self,user=None):
+        if user:
+            if user.id in self.user_lst:
+                return True
+            return False
+        return True
 
     def __unicode__(self):
         return unicode(self.creator) + " - " + self.title
