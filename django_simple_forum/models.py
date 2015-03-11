@@ -13,10 +13,10 @@ from django.utils.translation import ugettext_lazy as _
 class Category(models.Model):
     order = models.IntegerField()
     title = models.CharField(max_length=60)
-    
+
     def get_forums(self):
         return Forum.objects.filter(category=self.id)
-    
+
     def __unicode__(self):
         return self.title
 
@@ -32,28 +32,28 @@ class Forum(models.Model):
 
     def __unicode__(self):
         return self.title
-        
+
     def get_summary(self):
     	if len(self.description) > 50:
     	    return self.description[:50]+'...'
         return self.description
-        
+
     def get_visits(self):
         vs = 0
         for t in self.topic_set.all():
             vs += t.visits
         return vs
-        
-    def has_seen(self,user_id=None):
-        if user_id:
+
+    def has_seen(self,user=None):
+        if user:
             for t in self.topic_set.all():
-                if not t.has_seen(user_id):
+                if not t.has_seen(user):
                     return False
         return True
 
     def num_posts(self):
         return sum([t.num_posts() for t in self.topic_set.all()])
-        
+
     def num_topics(self):
         return self.topic_set.all().count()
 
@@ -89,7 +89,7 @@ class Topic(models.Model):
     def last_post(self):
         if self.post_set.count():
             return self.post_set.order_by("-created")[0]
-            
+
     def sum_visits(self,user_id=None):
         if user_id:
             if self.user_lst:
@@ -100,11 +100,11 @@ class Topic(models.Model):
                 self.user_lst = str(user_id)
         self.visits += 1
         self.save()
-        
-    def has_seen(self,user_id=None):
-        if user_id:
+
+    def has_seen(self,user=None):
+        if user and self.user_lst:
             lst = self.user_lst.split(',')
-            if lst and str(user_id) in lst:
+            if lst and user.id in lst:
                 return True
             return False
         return True
@@ -129,16 +129,16 @@ class Post(models.Model):
 
     def get_page(self):
         return self.get_post_num() / settings.POSTS_PER_PAGE + 1
-    
+
     def short(self):
         return u"%s - %s\n%s" % (self.creator, self.title, self.created.strftime("%Y-%m-%d %H:%M"))
-        
+
     def supershort(self):
         return u"%s: %s" % (self.creator, self.created.strftime("%Y-%m-%d %H:%M"))
-        
+
     def get_absolute_url(self):
         return u'/%s/?page=%d#%d' % (self.topic.id, self.get_page(),self.id)
-        
+
     def save(self, *args, **kwargs):
         self.topic.user_lst = ''
         self.topic.save()
