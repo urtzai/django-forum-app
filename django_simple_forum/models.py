@@ -45,7 +45,7 @@ class Forum(models.Model):
         return vs
 
     def has_seen(self,user=None):
-        if user and self.topic_set.all():
+        if user.is_authenticated():
             for t in self.topic_set.all():
                 if not t.has_seen(user):
                     return False
@@ -102,10 +102,11 @@ class Topic(models.Model):
         self.save()
 
     def has_seen(self,user=None):
-        if user and self.user_lst:
-            lst = self.user_lst.split(',')
-            if lst and user.id in lst:
-                return True
+        if user.is_authenticated():
+            if self.user_lst:
+                lst = self.user_lst.split(',')
+                if str(user.id) in lst:
+                    return True
             return False
         return True
 
