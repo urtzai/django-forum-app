@@ -45,7 +45,7 @@ class Forum(models.Model):
         return vs
 
     def has_seen(self,user=None):
-        if user:
+        if user and self.topic_set.all():
             for t in self.topic_set.all():
                 if not t.has_seen(user):
                     return False
