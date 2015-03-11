@@ -17,7 +17,7 @@ class TopicForm(forms.ModelForm):
 
     class Meta():
         model = Topic
-        fields = ('title','description')
+        fields = ('title',)
 
 
 class PostForm(forms.ModelForm):
