@@ -141,7 +141,7 @@ class Post(models.Model):
         return u'/%s/?page=%d#%d' % (self.topic.id, self.get_page(),self.id)
 
     def save(self, *args, **kwargs):
-        self.topic.user_lst = ''
+        self.topic.user_lst = str(self.creator.id)
         self.topic.save()
         super(Post, self).save(*args, **kwargs)
 
