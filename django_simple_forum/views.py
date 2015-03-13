@@ -48,8 +48,13 @@ def topic(request, slug, topic_id):
     """Listing of posts in a topic."""
     forum = get_object_or_404(Forum, slug=slug)
     posts = Post.objects.filter(topic=topic_id).order_by("created")
+    try:
+        user = request.user.id
+    except:
+        user = None
 
     topic = Topic.objects.get(pk=topic_id)
+    topic.sum_visits(user)
     return render_to_response("django_simple_forum/topic.html", add_csrf(request, forum=forum, posts=posts, pk=topic_id,
         topic=topic), context_instance=RequestContext(request))
 
