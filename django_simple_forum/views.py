@@ -54,6 +54,16 @@ def topic(request, slug, topic_id):
         topic=topic), context_instance=RequestContext(request))
 
 @login_required
+def close_topic(request, slug, topic_id):
+    forum = get_object_or_404(Forum, slug=slug)
+    posts = Post.objects.filter(topic=topic_id).order_by("created")
+
+    topic = get_object_or_404(Topic, pk=topic_id)
+    topic.closed = True
+    topic.save()
+    return HttpResponseRedirect(reverse('topic-detail', args=(slug,topic.id)))
+
+@login_required
 def post_reply(request, slug, topic_id):
 
     quote = request.GET.get('quote', '')
