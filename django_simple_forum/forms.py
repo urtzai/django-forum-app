@@ -17,15 +17,15 @@ class TopicForm(forms.ModelForm):
 
     class Meta():
         model = Topic
-        exclude = ('creator','updated', 'created', 'closed', 'forums', 'block_top')
+        fields = ('title',)
 
 
 class PostForm(forms.ModelForm):
     body = forms.CharField(label=_('Body'), widget=TinyMCE(
-                attrs={'cols': 80, 'rows': 30},
+                attrs={'cols': 80, 'rows': 30, 'class':'my_tinymce'},
                 mce_attrs = settings.TINYMCE_BODY_CONFIG,
             ))
-    
+
     class Meta():
         model = Post
         exclude = ('creator', 'updated', 'created','topic', 'user_ip',)
@@ -34,10 +34,10 @@ class PostForm(forms.ModelForm):
         body = self.cleaned_data["body"]
 
         if DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS:
-            profane_words = ProfaneWord.objects.all() 
+            profane_words = ProfaneWord.objects.all()
             bad_words = [w for w in profane_words if w.word in body.lower()]
 
             if bad_words:
                 raise forms.ValidationError("Bad words like '%s' are not allowed in posts." % (reduce(lambda x,y: "%s,%s" % (x,y),bad_words)))
-        
+
         return body
