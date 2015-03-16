@@ -14,10 +14,12 @@ class PostAdminForm(forms.ModelForm):
 class TopicForm(forms.ModelForm):
 
     title = forms.CharField(max_length=60, required=True)
+    description = forms.CharField(widget=TinyMCE(
+               attrs={'cols': 80, 'rows': 30,},mce_attrs=settings.TINYMCE_BODY_CONFIG))
 
     class Meta():
         model = Topic
-        fields = ('title',)
+        fields = ('title','description')
 
 
 class PostForm(forms.ModelForm):
