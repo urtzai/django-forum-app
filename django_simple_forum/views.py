@@ -124,14 +124,21 @@ def new_topic(request, slug):
 
             topic = Topic()
             topic.title = form.cleaned_data['title']
-            topic.description = form.cleaned_data['description']
             topic.creator = request.user
-
             topic.save()
+            
             topic.forums.add(forum)
             topic.save()
+            
+            post = Post()
+            post.title = form.cleaned_data['title']
+            post.body = form.cleaned_data['description']
+            post.creator = request.user
+            post.user_ip = request.META['REMOTE_ADDR']
+            post.topic = topic
+            post.save()
 
-            return HttpResponseRedirect(reverse('forum-detail', args=(slug, )))
+            return HttpResponseRedirect(reverse('topic-detail', args=(slug,topic.id, )))
 
     return render_to_response('django_simple_forum/new-topic.html', {
             'form': form,
