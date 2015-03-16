@@ -124,6 +124,7 @@ def new_topic(request, slug):
 
             topic = Topic()
             topic.title = form.cleaned_data['title']
+            topic.description = ''
             topic.creator = request.user
             topic.save()
             
