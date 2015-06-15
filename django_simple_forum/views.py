@@ -1,23 +1,17 @@
 from django.template import RequestContext
-
 from django.forms import models as forms_models
-
 from django.http import HttpResponseRedirect
-
 from django.shortcuts import render_to_response, get_object_or_404
-
 from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
-
 from django_simple_forum.models import Category, Forum, Topic, Post
 from django_simple_forum.forms import TopicForm, PostForm
-
-#from guest.decorators import guest_allowed, login_required
 from django.contrib.auth.decorators import login_required
-
 from django.template import RequestContext
-
+from gamerauntsia.log.models import Log
 from settings import *
+
+
 
 def index(request):
     """Main listing."""
@@ -102,6 +96,15 @@ def post_reply(request, slug, topic_id):
 
             post.save()
 
+            l = Log()
+            l.mota = 'Foroa'
+            l.tituloa = 'Erantzun berria'
+            l.deskripzioa = topic 
+            l.user = request.user
+            l.post_id = post.id
+            l.forum_id = forum.id
+            l.save()
+
             return HttpResponseRedirect(reverse('topic-detail', args=(slug,topic.id, )))
 
     return render_to_response('django_simple_forum/reply.html', {
@@ -138,6 +141,16 @@ def new_topic(request, slug):
             post.user_ip = request.META['REMOTE_ADDR']
             post.topic = topic
             post.save()
+
+            l = Log()
+            l.mota = 'Foroa'
+            l.tituloa = 'Gai berria'
+            l.deskripzioa = post.title
+            l.post_id = post.id
+            l.user = request.user
+            l.forum_id = forum.id
+            l.save()
+
 
             return HttpResponseRedirect(reverse('topic-detail', args=(slug,topic.id, )))
 
