@@ -1,14 +1,17 @@
 from django.db import models
 from django.conf import settings
+from django.db.models import Count
+from django.core.mail import send_mail
+from django.db.models.signals import post_save
+from photologue.models import Photo
+from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 try:
     from django.contrib.auth import get_user_model
 except ImportError: # django < 1.5
     from django.contrib.auth.models import User
 else:
     User = get_user_model()
-from photologue.models import Photo
-from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
 
 class Category(models.Model):
     order = models.IntegerField()
@@ -153,3 +156,24 @@ class ProfaneWord(models.Model):
 
     def __unicode__(self):
         return self.word
+        
+def send_post_email(sender,instance,**kwargs):
+    if kwargs['created']:
+        recipient_list = []
+        message = 'Mezu berri bat utzi dute zuk idatzitako gai hauetan: \n\n'
+        for forum in instance.topic.forums.all():
+        	message += '%sforoa/%s%s\n\n' % (settings.HOST,forum.slug,instance.get_absolute_url())
+        creators = Post.objects.filter(topic=instance.topic).values('creator__email').annotate(n=Count("creator__id"))
+        for creator in creators:
+            if not instance.creator.email == creator['creator__email'] and instance.creator.email_notification:
+                send_mail('[Game Erauntsia - '+instance.topic.title+']', message, settings.DEFAULT_FROM_EMAIL, [creator['creator__email']])
+
+def send_topic_email(sender,instance,**kwargs):
+    if kwargs['created']:
+        message = 'Gai berri bat sortu dute: \n\n%skudeatu/django_simple_forum/topic/%s' % (settings.HOST,instance.id)
+        for forum in instance.forums.all():
+            creator = forum.creator
+            creator.email_user(subject='[Game Erauntsia - '+instance.title+']', message=message, from_email=settings.DEFAULT_FROM_EMAIL)
+
+post_save.connect(send_topic_email, sender=Topic)
+post_save.connect(send_post_email, sender=Post)
