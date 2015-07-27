@@ -119,6 +119,7 @@ class Post(models.Model):
     topic = models.ForeignKey(Topic)
     body = models.TextField(max_length=10000)
     user_ip = models.GenericIPAddressField(blank=True, null=True)
+    telegram_id = models.CharField(max_length=60,blank=True, null=True)
 
     def __unicode__(self):
         return u"%s - %s - %s" % (self.creator, self.topic, self.title)
