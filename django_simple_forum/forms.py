@@ -30,7 +30,7 @@ class PostForm(forms.ModelForm):
 
     class Meta():
         model = Post
-        exclude = ('creator', 'updated', 'created','topic', 'user_ip',)
+        exclude = ('creator', 'updated', 'created','topic', 'user_ip','telegram_id')
 
     def clean_body(self):
         body = self.cleaned_data["body"]
