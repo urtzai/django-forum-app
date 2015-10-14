@@ -2,11 +2,13 @@ from django import forms
 from django_simple_forum.models import Topic, Post, ProfaneWord
 from tinymce.widgets import TinyMCE
 from django.utils.translation import ugettext as _
-from settings import *
+from django.conf import settings
+
+TINYMCE_BODY_CONFIG = getattr(settings, 'TINYMCE_BODY_CONFIG', {})
 
 class PostAdminForm(forms.ModelForm):
     body = forms.CharField(widget=TinyMCE(
-               attrs={'cols': 80, 'rows': 30,},mce_attrs=settings.TINYMCE_BODY_CONFIG))
+               attrs={'cols': 80, 'rows': 30,},mce_attrs=TINYMCE_BODY_CONFIG))
     class Meta:
         model = Post
 
@@ -15,7 +17,7 @@ class TopicForm(forms.ModelForm):
 
     title = forms.CharField(max_length=60, required=True)
     description = forms.CharField(widget=TinyMCE(
-               attrs={'cols': 80, 'rows': 30,},mce_attrs=settings.TINYMCE_BODY_CONFIG))
+               attrs={'cols': 80, 'rows': 30,},mce_attrs=TINYMCE_BODY_CONFIG))
 
     class Meta():
         model = Topic
@@ -25,7 +27,7 @@ class TopicForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     body = forms.CharField(label=_('Body'), widget=TinyMCE(
                 attrs={'cols': 80, 'rows': 30, 'class':'my_tinymce'},
-                mce_attrs = settings.TINYMCE_BODY_CONFIG,
+                mce_attrs = TINYMCE_BODY_CONFIG,
             ))
 
     class Meta():
