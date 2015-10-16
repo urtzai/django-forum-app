@@ -5,6 +5,7 @@ from django.utils.translation import ugettext as _
 from django.conf import settings
 
 TINYMCE_BODY_CONFIG = getattr(settings, 'TINYMCE_BODY_CONFIG', {})
+DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS', False)
 
 class PostAdminForm(forms.ModelForm):
     body = forms.CharField(widget=TinyMCE(
