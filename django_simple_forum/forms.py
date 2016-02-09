@@ -12,6 +12,7 @@ class PostAdminForm(forms.ModelForm):
                attrs={'cols': 80, 'rows': 30,},mce_attrs=TINYMCE_BODY_CONFIG))
     class Meta:
         model = Post
+        fields = ('body',)
 
 
 class TopicForm(forms.ModelForm):
