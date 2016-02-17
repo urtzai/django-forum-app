@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.01'
+version = '0.1'
 
 setup(name='django_simple_forum',
       version=version,
