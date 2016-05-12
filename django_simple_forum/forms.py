@@ -9,7 +9,7 @@ DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_SIMPLE_FORU
 
 class PostAdminForm(forms.ModelForm):
     body = forms.CharField(widget=TinyMCE(
-               attrs={'cols': 80, 'rows': 30,'placeholder': _("Your answer...")},mce_attrs=TINYMCE_BODY_CONFIG))
+               attrs={'cols': 80, 'rows': 30,'placeholder': _("Zure erantzuna...")},mce_attrs=TINYMCE_BODY_CONFIG))
     class Meta:
         model = Post
         fields = ('body',)
@@ -17,9 +17,9 @@ class PostAdminForm(forms.ModelForm):
 
 class TopicForm(forms.ModelForm):
 
-    title = forms.CharField(max_length=60, required=True)
-    description = forms.CharField(label=_("First post"),widget=TinyMCE(
-               attrs={'cols': 80, 'rows': 30,'placeholder': _("Write your first post here!")},mce_attrs=TINYMCE_BODY_CONFIG))
+    title = forms.CharField(label=_("Izenburua"),max_length=60, required=True)
+    description = forms.CharField(label=_("Lehen mezua"),widget=TinyMCE(
+               attrs={'cols': 80, 'rows': 30,'placeholder': _("Idatzi zure lehen mezua hemen!")},mce_attrs=TINYMCE_BODY_CONFIG))
 
     class Meta():
         model = Topic
@@ -27,8 +27,8 @@ class TopicForm(forms.ModelForm):
 
 
 class PostForm(forms.ModelForm):
-    body = forms.CharField(label=_('Body'), widget=TinyMCE(
-                attrs={'cols': 80, 'rows': 30, 'class':'my_tinymce','placeholder': _("Your answer...")},
+    body = forms.CharField(label=_('Testua'), widget=TinyMCE(
+                attrs={'cols': 80, 'rows': 30, 'class':'my_tinymce','placeholder': _("Zure erantzuna...")},
                 mce_attrs = TINYMCE_BODY_CONFIG,
             ))
 
