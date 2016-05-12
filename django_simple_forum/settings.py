@@ -2,26 +2,21 @@ from django.conf import settings
 
 POSTS_PER_PAGE = 10
 DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS', True)
-TINYMCE_BODY_CONFIG = {
-    #mode : "textareas",
-    "mode" : "exact",
-    "elements" : "body",
-    "convert_urls" : False,
-    "extended_valid_elements" : "iframe[src|name|width|height|align|frameborder|marginwidth|marginheight|scrolling]",
-    "theme" : "advanced",
-    "theme_advanced_buttons1" : "styleselect,bold,italic,underline,separator,bullist,numlist,blockquote,undo,redo,link,unlink,image,code,removeformat,cut,copy,paste,pastetext,pasteword,selectall,pastetext,",
-    "theme_advanced_buttons2" : "",
-    "theme_advanced_buttons3" : "",
-    "theme_advanced_toolbar_location" : "top",
-    "theme_advanced_toolbar_align" : "left",
-    "plugins" : "paste, autoresize",
-    "paste_auto_cleanup_on_paste" : True,
-    "paste_use_dialog" : False,
-    "forced_root_block" : "",
-    "force_br_newlines" : True,
-    "force_p_newlines" : False,
-    "content_css" : "/static/css/stylehtmleditor.css",
-    "extended_valid_elements" : "object[width|height|classid|codebase],param[name|value],embed[src|type|width|height|flashvars|wmode]",
-    'theme_advanced_resizing' : True,
-    'height':'100px',
+TINYMCE_DEFAULT_CONFIG = {
+    "language": 'eu',
+    "theme": "modern",
+    "height": 600,
+    "plugins": [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste",
+    ],
+    "toolbar": "styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | code preview",
+    "menubar": False,
+    "media_alt_source": False,
+    "media_poster": False,
+    "media_dimensions": False,
+    "content_css": "/static/css/tinymce_content.css",
+    "valid_elements": "@[class],p[align],h1,h2,h3,h4,h5,h6,a[href|target],strong/b,div[align],br,table,tbody,thead,tr,td,ul,ol,li,img[src|alt],em",
+    "extended_valid_elements": "iframe[src|name|width|height|align|frameborder|marginwidth|marginheight|scrolling],object[width|height|classid|codebase|name|id],param[name|value],embed[src|type|width|height|flashvars|wmode|bgcolor|quality|allowscriptaccess|allowfullscreen]",
 }

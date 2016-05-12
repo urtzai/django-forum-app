@@ -4,12 +4,12 @@ from tinymce.widgets import TinyMCE
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
-TINYMCE_BODY_CONFIG = getattr(settings, 'TINYMCE_BODY_CONFIG', {})
+TINYMCE_BODY_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', {})
 DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS', False)
 
 class PostAdminForm(forms.ModelForm):
     body = forms.CharField(widget=TinyMCE(
-               attrs={'cols': 80, 'rows': 30,},mce_attrs=TINYMCE_BODY_CONFIG))
+               attrs={'cols': 80, 'rows': 30,'placeholder': _("Your answer...")},mce_attrs=TINYMCE_BODY_CONFIG))
     class Meta:
         model = Post
         fields = ('body',)
@@ -18,8 +18,8 @@ class PostAdminForm(forms.ModelForm):
 class TopicForm(forms.ModelForm):
 
     title = forms.CharField(max_length=60, required=True)
-    description = forms.CharField(widget=TinyMCE(
-               attrs={'cols': 80, 'rows': 30,},mce_attrs=TINYMCE_BODY_CONFIG))
+    description = forms.CharField(label=_("First post"),widget=TinyMCE(
+               attrs={'cols': 80, 'rows': 30,'placeholder': _("Write your first post here!")},mce_attrs=TINYMCE_BODY_CONFIG))
 
     class Meta():
         model = Topic
@@ -28,7 +28,7 @@ class TopicForm(forms.ModelForm):
 
 class PostForm(forms.ModelForm):
     body = forms.CharField(label=_('Body'), widget=TinyMCE(
-                attrs={'cols': 80, 'rows': 30, 'class':'my_tinymce'},
+                attrs={'cols': 80, 'rows': 30, 'class':'my_tinymce','placeholder': _("Your answer...")},
                 mce_attrs = TINYMCE_BODY_CONFIG,
             ))
 
