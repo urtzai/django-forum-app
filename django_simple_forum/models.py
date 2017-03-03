@@ -111,21 +111,22 @@ class Topic(models.Model):
     def __unicode__(self):
         return unicode(self.creator) + " - " + self.title
 
+
 class Post(models.Model):
     title = models.CharField(max_length=60, verbose_name="Izenburua")
     created = models.DateTimeField(auto_now_add=True)
-    creator = models.ForeignKey(User, blank=True, null=True,related_name="%(class)s_posts")
+    creator = models.ForeignKey(User, blank=True, null=True, related_name="%(class)s_posts")
     updated = models.DateTimeField(auto_now=True)
     topic = models.ForeignKey(Topic)
     body = models.TextField(max_length=10000)
     user_ip = models.GenericIPAddressField(blank=True, null=True)
-    telegram_id = models.CharField(max_length=20,blank=True, null=True)
+    telegram_id = models.CharField(max_length=20, blank=True, null=True)
 
     def __unicode__(self):
         return u"%s - %s - %s" % (self.creator, self.topic, self.title)
 
     def get_post_num(self):
-        return self._default_manager.filter(topic__id=self.topic_id).filter(created__lt=self.created).count()
+        return Post.objects.filter(topic__id=self.topic_id).filter(created__lt=self.created).count()
 
     def get_page(self):
         return self.get_post_num() / settings.POSTS_PER_PAGE + 1
@@ -137,7 +138,7 @@ class Post(models.Model):
         return u"%s: %s" % (self.creator, self.created.strftime("%Y-%m-%d %H:%M"))
 
     def get_absolute_url(self):
-        return u'/%s/?page=%d#%d' % (self.topic.id, self.get_page(),self.id)
+        return u'/%s/?page=%d#%d' % (self.topic.id, self.get_page(), self.id)
 
     def save(self, *args, **kwargs):
         self.topic.user_lst = str(self.creator.id)
@@ -152,7 +153,7 @@ class ProfaneWord(models.Model):
 
     def __unicode__(self):
         return self.word
-        
+
 def send_post_email(sender,instance,**kwargs):
     if kwargs['created']:
         recipient_list = []
