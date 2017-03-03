@@ -17,9 +17,9 @@ setup(name='django_simple_forum',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=False,
+      requires=['django(>=1.10)'],
       install_requires=[
           # -*- Extra requirements: -*-
-          'Django >= 1.10',
       ],
       entry_points="""
       # -*- Entry points: -*-
