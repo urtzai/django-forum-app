@@ -33,15 +33,15 @@ Then run migrations:
 
 Ther are some option you could overrite to change the default behaviour of the forum:
 
-+ *POSTS_PER_PAGE*
++ **POSTS_PER_PAGE**
 
    Number of posts shown per page.
 
-+ *DJANGO_FORUM_APP_FILTER_PROFANE_WORDS*
++ **DJANGO_FORUM_APP_FILTER_PROFANE_WORDS**
 
    Attribute to filter profane words. Values should be *True*/*False*
 
-+ *TINYMCE_DEFAULT_CONFIG*
++ **TINYMCE_DEFAULT_CONFIG**
 
    Overriding this option you can change the tinymce editor behaviour.
 
