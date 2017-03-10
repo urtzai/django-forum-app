@@ -35,14 +35,14 @@ Ther are some option you could overrite to change the default behaviour of the f
 
 + *POSTS_PER_PAGE*
 
-...Number of posts shown per page.
+···Number of posts shown per page.
 
 + *DJANGO_FORUM_APP_FILTER_PROFANE_WORDS*
 
-...Attribute to filter profane words. Values should be *True*/*False*
+···Attribute to filter profane words. Values should be *True*/*False*
 
 + *TINYMCE_DEFAULT_CONFIG*
 
-...Overriding this option you can change the tinymce editor behaviour.
+···Overriding this option you can change the tinymce editor behaviour.
 
 Should you experience any issues do not hesistate to post an issue or contribute in this project pulling requests.
