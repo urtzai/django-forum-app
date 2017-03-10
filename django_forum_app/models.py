@@ -7,10 +7,9 @@ from photologue.models import Photo
 from django.utils.translation import ugettext_lazy as _
 try:
     from django.contrib.auth import get_user_model
+    User = get_user_model()
 except ImportError:  # django < 1.5
     from django.contrib.auth.models import User
-else:
-    User = get_user_model()
 
 
 class Category(models.Model):
