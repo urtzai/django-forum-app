@@ -164,21 +164,21 @@ class ProfaneWord(models.Model):
 
 def send_post_email(sender, instance, **kwargs):
     if kwargs['created']:
-        message = 'Mezu berri bat utzi dute zuk idatzitako gai hauetan: \n\n'
+        message = _('There is a new message on this forums you previously posted: \n\n')
         for forum in instance.topic.forums.all():
-            message += '%sforoa/%s%s\n\n' % (settings.HOST, forum.slug, instance.get_absolute_url())
+            message += '%sforum/%s%s\n\n' % (settings.HOST, forum.slug, instance.get_absolute_url())
         creators = Post.objects.filter(topic=instance.topic).values('creator__email').annotate(n=Count("creator__id"))
         for creator in creators:
             if not instance.creator.email == creator['creator__email'] and instance.creator.email_notification:
-                send_mail('[Game Erauntsia - ' + instance.topic.title + ']', message, settings.DEFAULT_FROM_EMAIL, [creator['creator__email']])
+                send_mail('[' + settings.FORUM_SUBJECT + ' - ' + instance.topic.title + ']', message, settings.DEFAULT_FROM_EMAIL, [creator['creator__email']])
 
 
 def send_topic_email(sender, instance, **kwargs):
     if kwargs['created']:
-        message = 'Gai berri bat sortu dute: \n\n%skudeatu/django_forum_app/topic/%s' % (settings.HOST, instance.id)
+        message = _('New topic was created: \n\n%sadmin/django_forum_app/topic/%s') % (settings.HOST, instance.id)
         for forum in instance.forums.all():
             creator = forum.creator
-            creator.email_user(subject='[Game Erauntsia - ' + instance.title + ']', message=message, from_email=settings.DEFAULT_FROM_EMAIL)
+            creator.email_user(subject='[' + settings.FORUM_SUBJECT + ' - ' + instance.title + ']', message=message, from_email=settings.DEFAULT_FROM_EMAIL)
 
 post_save.connect(send_topic_email, sender=Topic)
 post_save.connect(send_post_email, sender=Post)

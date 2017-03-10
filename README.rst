@@ -24,19 +24,19 @@ Installation
 ------------
 Clone this repository and add it to your INSTALLED_APPS list:
 
-
     INSTALLED_APPS = [
         ...
         'django_forum_app',
         ...
     ]
 
-
 Then run migrations:
-
 
     ./manage.py migrate django_forums_app
 
+Finally, add this in urls.py:
+
+    url(r'^forum/', include('django_forum_app.urls')),
 
 Custom options
 --------------
