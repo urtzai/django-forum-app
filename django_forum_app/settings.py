@@ -1,7 +1,9 @@
 from django.conf import settings
 
 POSTS_PER_PAGE = 10
+
 DJANGO_FORUM_APP_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_FORUM_APP_FILTER_PROFANE_WORDS', True)
+
 TINYMCE_DEFAULT_CONFIG = {
     "language": 'eu',
     "theme": "modern",
