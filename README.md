@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/urtzai/django-simple-forum.svg?branch=master)](https://travis-ci.org/urtzai/django-simple-forum)[![Code Health](https://landscape.io/github/urtzai/django-simple-forum/master/landscape.svg?style=flat)](https://landscape.io/github/urtzai/django-simple-forum/master)
+
 django-simple-forum
 ===================
 
