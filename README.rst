@@ -8,10 +8,10 @@ Django-forum-app
     :target: https://pypi.python.org/pypi/django-forum-app/
     :alt: Number of PyPI downloads
 
-.. image:: https://travis-ci.org/urtzai/django-simple-forum.svg?branch=master
-    :target: https://travis-ci.org/urtzai/django-simple-forum
+.. image:: https://travis-ci.org/urtzai/django-forum-app.svg?branch=master
+    :target: https://travis-ci.org/urtzai/django-forum-app
 
-A very simple/minimalistic Django Forum app based on yoanisgil's [Django simple forum](https://github.com/yoanisgil/django-simple-forum) project.
+A very simple/minimalistic Django Forum app based on yoanisgil's `Django simple forum <https://github.com/yoanisgil/django-simple-forum>`_ project.
 
 
 Dependencies
