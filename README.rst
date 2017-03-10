@@ -8,12 +8,8 @@ Django-forum-app
     :target: https://pypi.python.org/pypi/django-forum-app/
     :alt: Number of PyPI downloads
 
-.. image:: https://img.shields.io/pypi/wheel/django-forum-app.svg
-    :target: https://pypi.python.org/pypi/django-forum-app/
-    :alt: Wheel Status
-    
-.. image:: https://travis-ci.org/urtzai/django-forum-app.svg?branch=master
-    :target: https://travis-ci.org/urtzai/django-forum-app
+.. image:: https://travis-ci.org/urtzai/django-simple-forum.svg?branch=master
+    :target: https://travis-ci.org/urtzai/django-simple-forum
 
 A very simple/minimalistic Django Forum app based on yoanisgil's [Django simple forum](https://github.com/yoanisgil/django-simple-forum) project.
 
@@ -64,5 +60,5 @@ Should you experience any issues do not hesistate to post an issue or contribute
 
 Travis CI status
 ----------------
-We use Travis to check that the unit test suite is working against various combinations of Python, Django, etc... 
+We use Travis to check that the unit test suite is working against various combinations of Python, Django, etc...
 `Click here for the full report <http://travis-ci.org/#!/urtzai/django-forum-app>`_.
