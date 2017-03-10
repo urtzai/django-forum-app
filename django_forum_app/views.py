@@ -2,16 +2,15 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
-from django_simple_forum.models import Category, Forum, Topic, Post
-from django_simple_forum.forms import TopicForm, PostForm
+from django_forum_app.models import Category, Forum, Topic, Post
+from django_forum_app.forms import TopicForm, PostForm
 from django.contrib.auth.decorators import login_required
-from gamerauntsia.log.models import Log
 
 
 def index(request):
     """Main listing."""
     categories = Category.objects.all().order_by('order')
-    return render(request, "django_simple_forum/list.html", {'categories': categories, 'user': request.user})
+    return render(request, "django_forum_app/list.html", {'categories': categories, 'user': request.user})
 
 
 def add_csrf(request, ** kwargs):
@@ -29,7 +28,7 @@ def forum(request, slug):
 
     forum = get_object_or_404(Forum, slug=slug)
 
-    return render(request, "django_simple_forum/forum.html", add_csrf(request, topics=topics, forum=forum))
+    return render(request, "django_forum_app/forum.html", add_csrf(request, topics=topics, forum=forum))
 
 
 def topic(request, slug, topic_id):
@@ -43,7 +42,7 @@ def topic(request, slug, topic_id):
 
     topic = Topic.objects.get(pk=topic_id)
     topic.sum_visits(user)
-    return render(request, "django_simple_forum/topic.html", add_csrf(request, forum=forum, posts=posts, pk=topic_id, topic=topic))
+    return render(request, "django_forum_app/topic.html", add_csrf(request, forum=forum, posts=posts, pk=topic_id, topic=topic))
 
 
 @login_required
@@ -88,19 +87,9 @@ def post_reply(request, slug, topic_id):
             post.user_ip = request.META['REMOTE_ADDR']
 
             post.save()
-
-            l = Log()
-            l.mota = 'Foroa'
-            l.tituloa = 'Erantzun berria'
-            l.deskripzioa = topic
-            l.user = request.user
-            l.post_id = post.id
-            l.forum_id = forum.id
-            l.save()
-
             return HttpResponseRedirect(reverse('topic-detail', args=(slug, topic.id, )))
 
-    return render(request, 'django_simple_forum/reply.html', {'form': form, 'topic': topic, 'forum': forum, 'posts': posts, 'quote': quote})
+    return render(request, 'django_forum_app/reply.html', {'form': form, 'topic': topic, 'forum': forum, 'posts': posts, 'quote': quote})
 
 
 @login_required
@@ -129,16 +118,6 @@ def new_topic(request, slug):
             post.user_ip = request.META['REMOTE_ADDR']
             post.topic = topic
             post.save()
-
-            l = Log()
-            l.mota = 'Foroa'
-            l.tituloa = 'Gai berria'
-            l.deskripzioa = post.title
-            l.post_id = post.id
-            l.user = request.user
-            l.forum_id = forum.id
-            l.save()
-
             return HttpResponseRedirect(reverse('topic-detail', args=(slug, topic.id, )))
 
-    return render(request, 'django_simple_forum/new-topic.html', {'form': form, 'forum': forum})
+    return render(request, 'django_forum_app/new-topic.html', {'form': form, 'forum': forum})

@@ -1,11 +1,11 @@
 from django import forms
-from django_simple_forum.models import Topic, Post, ProfaneWord
+from django_forum_app.models import Topic, Post, ProfaneWord
 from tinymce.widgets import TinyMCE
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
 TINYMCE_BODY_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', {})
-DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS', False)
+DJANGO_FORUM_APP_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_FORUM_APP_FILTER_PROFANE_WORDS', False)
 
 class PostAdminForm(forms.ModelForm):
     body = forms.CharField(widget=TinyMCE(
@@ -39,7 +39,7 @@ class PostForm(forms.ModelForm):
     def clean_body(self):
         body = self.cleaned_data["body"]
 
-        if DJANGO_SIMPLE_FORUM_FILTER_PROFANE_WORDS:
+        if DJANGO_FORUM_APP_FILTER_PROFANE_WORDS:
             profane_words = ProfaneWord.objects.all()
             bad_words = [w for w in profane_words if w.word in body.lower()]
 

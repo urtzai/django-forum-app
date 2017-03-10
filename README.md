@@ -1,32 +1,35 @@
-[![Build Status](https://travis-ci.org/urtzai/django-simple-forum.svg?branch=master)](https://travis-ci.org/urtzai/django-simple-forum)[![Code Health](https://landscape.io/github/urtzai/django-simple-forum/master/landscape.svg?style=flat)](https://landscape.io/github/urtzai/django-simple-forum/master)
+[![Build Status](https://travis-ci.org/urtzai/django-simple-forum.svg?branch=master)](https://travis-ci.org/urtzai/django-simple-forum) [![Code Health](https://landscape.io/github/urtzai/django-simple-forum/master/landscape.svg?style=flat)](https://landscape.io/github/urtzai/django-simple-forum/master)
 
-django-simple-forum
+django-forum-app
 ===================
 
-A very simple/minimalistic Django Forum
+A very simple/minimalistic Django Forum app based on yoanisgil's [Django simple forum](https://github.com/yoanisgil/django-simple-forum) project.
 
-The goal is to provide a very simple/minimalistic starter app
-for those seeking to add forum capabilities to their web application.
-Most of the code & ideas were taken from here:
 
-http://lightbird.net/dbe/forum1.html
+Dependencies
+===================
 
-So a lot of thanks goes to the guy/girl who took the time to put
-the tutorial together.
+* Django >= 1.10
+* django-photologue >= 3.6
+* tinymce >= 4.0.0
 
 Installation
 ===================
 
-Clone this repository and add it to your INSTALLED_APPS list then run:
+Clone this repository and add it to your INSTALLED_APPS list:
 
-./manage.py migrate django_simple_forums 
+```python
+INSTALLED_APPS = [
+    ...
+    'django-forum-app',
+    ...
+]
+```
 
-to get the database schema setup.
+Then run migrations:
 
-Should you experience any issues do not hesistate to contact me
+```
+./manage.py migrate django_forums_app
+```
 
-yoanis at 2burbujas dot net
-
-or just post an issue.
-
-Cheers!
+Should you experience any issues do not hesistate to post an issue or contribute in this project pulling requests.

@@ -177,7 +177,7 @@ def send_post_email(sender, instance, **kwargs):
 
 def send_topic_email(sender, instance, **kwargs):
     if kwargs['created']:
-        message = 'Gai berri bat sortu dute: \n\n%skudeatu/django_simple_forum/topic/%s' % (settings.HOST, instance.id)
+        message = 'Gai berri bat sortu dute: \n\n%skudeatu/django_forum_app/topic/%s' % (settings.HOST, instance.id)
         for forum in instance.forums.all():
             creator = forum.creator
             creator.email_user(subject='[Game Erauntsia - ' + instance.title + ']', message=message, from_email=settings.DEFAULT_FROM_EMAIL)

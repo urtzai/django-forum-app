@@ -20,6 +20,7 @@ setup(name='django_simple_forum',
       requires=['django(>=1.10)'],
       install_requires=[
           # -*- Extra requirements: -*-
+          'django-photologue',
       ],
       entry_points="""
       # -*- Entry points: -*-

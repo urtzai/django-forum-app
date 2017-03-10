@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from django_simple_forum import views
+from django_forum_app import views
 
 urlpatterns = [
     url(r'^$', views.index, name='forum-index'),
