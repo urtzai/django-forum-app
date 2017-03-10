@@ -45,4 +45,11 @@ Ther are some option you could overrite to change the default behaviour of the f
 
    Overriding this option you can change the tinymce editor behaviour.
 
+## Support
+
 Should you experience any issues do not hesistate to post an issue or contribute in this project pulling requests.
+
+## Travis CI status
+
+We use Travis to check that the unit test suite is working against various combinations of Python, Django, etc... 
+[Click here for the full report](http://travis-ci.org/#!/urtzai/django-forum-app).

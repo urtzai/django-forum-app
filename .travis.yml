@@ -14,7 +14,20 @@ env:
   - DJANGO="Django>=1.8.0,<1.9.0"
   - DJANGO="Django>=1.9.0,<1.10.0"
 install:
+  - pip install MySQL-python
   - pip install -q $DJANGO
+  - python setup.py develop
 
 script:
   - python runtests.py
+
+matrix:
+  exclude:
+    - python: "3.4"
+      env: DJANGO="Django>=1.6.0,<1.7.0"
+    - python: "3.5"
+      env: DJANGO="Django>=1.6.0,<1.7.0"
+    - python: "3.5"
+      env: DJANGO="Django>=1.7.0,<1.8.0"
+    - python: "3.3"
+      env: DJANGO="Django>=1.9.0,<1.10.0"
