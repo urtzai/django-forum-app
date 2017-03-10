@@ -42,6 +42,10 @@ Custom options
 --------------
 Ther are some option you could overrite to change the default behaviour of the forum:
 
+**FORUM_SUBJECT**
+
+Subject for email notifications
+
 **POSTS_PER_PAGE**
 
 Number of posts shown per page.
