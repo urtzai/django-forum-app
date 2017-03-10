@@ -6,7 +6,7 @@ from django.conf import settings
 from django.test.utils import get_runner
 
 
-APP_NAME = 'django_simple_forum'
+APP_NAME = 'django_forum_app'
 
 settings.configure(
     DEBUG=True,
