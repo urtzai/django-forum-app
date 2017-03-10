@@ -9,7 +9,7 @@ A very simple/minimalistic Django Forum app based on yoanisgil's [Django simple 
 
 * Django >= 1.10
 * django-photologue >= 3.6
-* tinymce >= 4.0.0
+* django-tinymce >= 2.6.0
 
 ## Installation
 
@@ -18,7 +18,7 @@ Clone this repository and add it to your INSTALLED_APPS list:
 ```python
 INSTALLED_APPS = [
     ...
-    'django-forum-app',
+    'django_forum_app',
     ...
 ]
 ```
