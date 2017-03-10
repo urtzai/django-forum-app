@@ -7,7 +7,7 @@ A very simple/minimalistic Django Forum app based on yoanisgil's [Django simple 
 
 ## Dependencies
 
-* Django >= 1.10
+* Django >= 1.8
 * django-photologue >= 3.6
 * django-tinymce >= 2.6.0
 
