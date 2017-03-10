@@ -14,7 +14,7 @@ env:
 install:
   - pip install MySQL-python
   - pip install -q $DJANGO
-  - python install -r requirements.txt
+  - pip install -r requirements.txt
 
 script:
   - python runtests.py
