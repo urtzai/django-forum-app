@@ -28,7 +28,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
-    requires=['django>=1.10'],
+    requires=['django(>=1.8)'],
     install_requires=get_requirements('requirements.txt'),
     classifiers=[
         'Development Status :: 4 - Beta',
