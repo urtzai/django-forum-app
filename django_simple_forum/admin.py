@@ -17,6 +17,7 @@ class TopicAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
     search_fields = ["title", "creator"]
     list_display = ["title", "topic", "creator", "created"]
+    raw_id_fields = ('creator','topic')
     form = PostAdminForm
 
 class ProfaneWordAdmin(admin.ModelAdmin):
