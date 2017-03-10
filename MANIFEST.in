@@ -3,3 +3,4 @@ include *.py
 include *.txt
 include LICENSE
 recursive-include django_forum_app *.html
+recursive-include django_forum_app *.po
