@@ -1,14 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
+# Django forum app
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Urtzi Odriozola <uodriozola@codesyntax.com>, 2017.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-10 17:29+0100\n"
+"POT-Creation-Date: 2017-03-10 17:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:12 forms.py:31
-msgid "Zure erantzuna..."
-msgstr ""
-
-#: forms.py:20
-msgid "Izenburua"
-msgstr ""
-
-#: forms.py:21
-msgid "Lehen mezua"
+#: forms.py:13 forms.py:33
+msgid "Your answer..."
 msgstr ""
 
 #: forms.py:22
-msgid "Idatzi zure lehen mezua hemen!"
+msgid "Title"
 msgstr ""
 
-#: forms.py:30
-msgid "Testua"
+#: forms.py:23
+msgid "First message"
+msgstr ""
+
+#: forms.py:24
+msgid "Write your answer here!"
+msgstr ""
+
+#: forms.py:32
+msgid "Body"
+msgstr ""
+
+#: forms.py:49
+#, python-format
+msgid "Bad words like '%s' are not allowed in posts."
 msgstr ""
 
 #: models.py:167
