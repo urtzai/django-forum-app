@@ -1,15 +1,18 @@
 Django-forum-app
 ================
-.. image:: https://img.shields.io/pypi/v/django-forum-app.svg
-    :target: https://pypi.python.org/pypi/django-forum-app/
-    :alt: Latest PyPI version
+|Travis| |Python27| |Python35| |PyPi|
 
-.. image:: https://img.shields.io/pypi/dm/django-forum-app.svg
-    :target: https://pypi.python.org/pypi/django-forum-app/
-    :alt: Number of PyPI downloads
+.. |Travis| image:: https://api.travis-ci.org/urtzai/django-forum-app.svg?branch=master
+.. _Travis: https://travis-ci.org/urtzai/django-forum-app
 
-.. image:: https://travis-ci.org/urtzai/django-forum-app.svg?branch=master
-    :target: https://travis-ci.org/urtzai/django-forum-app
+.. |Python27| image:: https://img.shields.io/badge/python-2.7-blue.svg
+.. _Python27: https://badge.fury.io/py/django-forum-app
+
+.. |Python35| image:: https://img.shields.io/badge/python-3.5-blue.svg
+.. _Python35: https://badge.fury.io/py/django-forum-app
+
+.. |PyPi| image:: https://badge.fury.io/py/django-forum-app.svg
+.. _PyPi: https://badge.fury.io/py/django-forum-app
 
 A very simple/minimalistic Django Forum app based on yoanisgil's `Django simple forum <https://github.com/yoanisgil/django-simple-forum>`_ project.
 
@@ -25,9 +28,7 @@ Installation
 Clone this repository and add it to your INSTALLED_APPS list:
 
     INSTALLED_APPS = [
-        ...
         'django_forum_app',
-        ...
     ]
 
 Then run migrations:
