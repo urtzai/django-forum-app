@@ -1,10 +1,13 @@
 from django.test import TestCase
-from django.urls import reverse
+try:
+    from django.core.urlresolvers import reverse
+except ImportError:  # django < 1.10
+    from django.urls import reverse
 from django.test import Client
-from django.conf import settings
 from django_forum_app.models import Category, Forum, Topic, Post
 try:
-    User = settings.AUTH_USER_MODEL
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
 except ImportError:  # django < 1.5
     from django.contrib.auth.models import User
 
