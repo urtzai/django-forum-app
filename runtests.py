@@ -12,7 +12,7 @@ settings.configure(
     DEBUG=True,
     DATABASES={
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.sqlite3',
         }
     },
     USE_TZ=True,

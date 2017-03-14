@@ -11,7 +11,6 @@ env:
   - DJANGO="Django>=1.9.0,<1.10.0"
   - DJANGO="Django>=1.10.0,<1.11.0"
 install:
-  - pip install MySQL-python
   - pip install -q $DJANGO
   - pip install -r requirements.txt
 
