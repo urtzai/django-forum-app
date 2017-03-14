@@ -22,6 +22,10 @@ Django-forum-app
 
 A very simple/minimalistic Django Forum app based on yoanisgil's `Django simple forum <https://github.com/yoanisgil/django-simple-forum>`_ project.
 
+Example
+-------
+A `production example <http://gamerauntsia.eus/foroa/>_` of this forum app courtesy of Game Erauntsia, basque gamer community
+
 
 Dependencies
 ------------
@@ -66,7 +70,7 @@ Ther are some option you could overrite to change the default behaviour of the f
     **Default:** ``10``
 
 ``DJANGO_FORUM_APP_FILTER_PROFANE_WORDS``
-    Attribute to filter profane words. Values should be *True*/*False*
+    Attribute to filter profane words. Values should be ``True | False``
 
     **Default:** ``True``
 
