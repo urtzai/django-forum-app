@@ -1,8 +1,8 @@
 from django.conf import settings
 
-FORUM_SUBJECT = "FORUM"
+FORUM_SUBJECT = getattr(settings, 'FORUM_SUBJECT', "FORUM")
 
-POSTS_PER_PAGE = 10
+POSTS_PER_PAGE = getattr(settings, 'POSTS_PER_PAGE', 10)
 
 DJANGO_FORUM_APP_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_FORUM_APP_FILTER_PROFANE_WORDS', True)
 
