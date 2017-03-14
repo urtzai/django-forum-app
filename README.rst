@@ -1,9 +1,12 @@
 Django-forum-app
 ================
-|Travis| |Landscape| |Python27| |Python35| |PyPi| |Requires|
+|Travis| |Coveralls| |Landscape| |Python27| |Python35| |PyPi| |Requires|
 
 .. |Travis| image:: https://api.travis-ci.org/urtzai/django-forum-app.svg?branch=master
 .. _Travis: https://travis-ci.org/urtzai/django-forum-app
+
+.. |Coveralls| image:: https://coveralls.io/repos/github/urtzai/django-forum-app/badge.svg?branch=master
+.. _Coveralls: https://coveralls.io/github/urtzai/django-forum-app?branch=master
 
 .. |Landscape| image:: https://landscape.io/github/urtzai/django-simple-forum/master/landscape.svg?style=flat
 .. _Landscape: https://landscape.io/github/urtzai/django-simple-forum/master
