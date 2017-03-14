@@ -1,6 +1,6 @@
 Django-forum-app
 ================
-|Travis| |Landscape| |Python27| |Python35| |PyPi|
+|Travis| |Landscape| |Python27| |Python35| |PyPi| |Requires|
 
 .. |Travis| image:: https://api.travis-ci.org/urtzai/django-forum-app.svg?branch=master
 .. _Travis: https://travis-ci.org/urtzai/django-forum-app
@@ -16,6 +16,9 @@ Django-forum-app
 
 .. |PyPi| image:: https://badge.fury.io/py/django-forum-app.svg
 .. _PyPi: https://badge.fury.io/py/django-forum-app
+
+.. |Requires| image:: https://requires.io/github/urtzai/django-forum-app/requirements.svg?branch=master
+.. _Requires: https://requires.io/github/urtzai/django-forum-app/requirements/?branch=master
 
 A very simple/minimalistic Django Forum app based on yoanisgil's `Django simple forum <https://github.com/yoanisgil/django-simple-forum>`_ project.
 
