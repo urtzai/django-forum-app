@@ -17,7 +17,7 @@ class BasicTest(TestCase):
         user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
         cat = Category.objects.create(order=1, title="General")
         forum = Forum.objects.create(title="The Beatles", slug="the-beatles", category=cat, creator=user)
-        topic = Topic.objects.create(title="Which is the first album's name?", forums=forum, creator=user)
+        topic = Topic.objects.create(title="Which is the first album's name?", forums=[forum], creator=user)
         Post.objects.create(title="My opinion", creator=user, topic=topic, body="I think is Please Please Me")
 
     def test_forum_index(self):
