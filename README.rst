@@ -1,27 +1,26 @@
 Django-forum-app
 ================
-|Travis| |Coveralls| |Landscape| |Python27| |Python35| |PyPi| |Requires|
 
-.. |Travis| image:: https://api.travis-ci.org/urtzai/django-forum-app.svg?branch=master
-.. _Travis: https://travis-ci.org/urtzai/django-forum-app
+.. image:: https://api.travis-ci.org/urtzai/django-forum-app.svg?branch=master
+    :target: https://travis-ci.org/urtzai/django-forum-app
 
-.. |Coveralls| image:: https://coveralls.io/repos/github/urtzai/django-forum-app/badge.svg?branch=master
-.. _Coveralls: https://coveralls.io/github/urtzai/django-forum-app?branch=master
+.. image:: https://coveralls.io/repos/github/urtzai/django-forum-app/badge.svg
+    :target: https://coveralls.io/github/urtzai/django-forum-app
 
-.. |Landscape| image:: https://landscape.io/github/urtzai/django-simple-forum/master/landscape.svg?style=flat
-.. _Landscape: https://landscape.io/github/urtzai/django-simple-forum/master
+.. image:: https://landscape.io/github/urtzai/django-forum-app/master/landscape.svg
+    :target: https://landscape.io/github/urtzai/django-forum-app
 
-.. |Python27| image:: https://img.shields.io/badge/python-2.7-blue.svg
-.. _Python27: https://badge.fury.io/py/django-forum-app
+.. image:: https://img.shields.io/badge/python-2.7-blue.svg
+    :target: https://badge.fury.io/py/django-forum-app
 
-.. |Python35| image:: https://img.shields.io/badge/python-3.5-blue.svg
-.. _Python35: https://badge.fury.io/py/django-forum-app
+.. image:: https://img.shields.io/badge/python-3.5-blue.svg
+    :target: https://badge.fury.io/py/django-forum-app
 
-.. |PyPi| image:: https://badge.fury.io/py/django-forum-app.svg
-.. _PyPi: https://badge.fury.io/py/django-forum-app
+.. image:: https://badge.fury.io/py/django-forum-app.svg
+    :target: https://badge.fury.io/py/django-forum-app
 
-.. |Requires| image:: https://requires.io/github/urtzai/django-forum-app/requirements.svg?branch=master
-.. _Requires: https://requires.io/github/urtzai/django-forum-app/requirements/?branch=master
+.. image:: https://requires.io/github/urtzai/django-forum-app/requirements.svg
+    :target: https://requires.io/github/urtzai/django-forum-app/requirements
 
 A very simple/minimalistic Django Forum app based on yoanisgil's `Django simple forum <https://github.com/yoanisgil/django-simple-forum>`_ project.
 
