@@ -24,7 +24,7 @@ A very simple/minimalistic Django Forum app based on yoanisgil's `Django simple 
 
 Example
 -------
-A `production example <http://gamerauntsia.eus/foroa/>_` of this forum app courtesy of Game Erauntsia, basque gamer community
+A `production example <http://gamerauntsia.eus/foroa/>`_ of this forum app courtesy of Game Erauntsia, basque gamer community
 
 
 Dependencies
