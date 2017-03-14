@@ -4,6 +4,7 @@ from django.db.models import Count
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from photologue.models import Photo
+from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 try:
     User = settings.AUTH_USER_MODEL
@@ -166,7 +167,7 @@ def send_post_email(sender, instance, **kwargs):
     if kwargs['created']:
         message = _('There is a new message on this forums you previously posted: \n\n')
         for forum in instance.topic.forums.all():
-            message += '%sforum/%s%s\n\n' % (settings.HOST, forum.slug, instance.get_absolute_url())
+            message += 'http://%sforum/%s%s\n\n' % (Site.objects.get_current().domain, forum.slug, instance.get_absolute_url())
         creators = Post.objects.filter(topic=instance.topic).values('creator__email').annotate(n=Count("creator__id"))
         for creator in creators:
             if not instance.creator.email == creator['creator__email'] and instance.creator.email_notification:
@@ -175,7 +176,7 @@ def send_post_email(sender, instance, **kwargs):
 
 def send_topic_email(sender, instance, **kwargs):
     if kwargs['created']:
-        message = _('New topic was created: \n\n%sadmin/django_forum_app/topic/%s') % (settings.HOST, instance.id)
+        message = _('New topic was created: \n\nhttp://%sadmin/django_forum_app/topic/%s') % (Site.objects.get_current().domain, instance.id)
         for forum in instance.forums.all():
             creator = forum.creator
             creator.email_user(subject='[' + settings.FORUM_SUBJECT + ' - ' + instance.title + ']', message=message, from_email=settings.DEFAULT_FROM_EMAIL)
