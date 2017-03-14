@@ -41,6 +41,6 @@ if hasattr(django, 'setup'):
     django.setup()
 TestRunner = get_runner(settings)
 test_runner = TestRunner()
-failures = test_runner.run_tests([APP_NAME])
+failures = test_runner.run_tests(["tests"])
 if failures:
     sys.exit(failures)
