@@ -71,21 +71,21 @@ Ther are some option you could overrite to change the default behaviour of the f
 
     .. code-block:: python
 
-    TINYMCE_DEFAULT_CONFIG = {
-        "language": 'en',
-        "theme": "modern",
-        "height": 600,
-        "plugins": [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste",
-        ],
-        "toolbar": "styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | code preview",
-        "menubar": False,
-        "media_alt_source": False,
-        "media_poster": False,
-        "media_dimensions": False,
-    }
+        TINYMCE_DEFAULT_CONFIG = {
+            'language': 'en',
+            'theme': 'modern',
+            'height': 600,
+            'plugins': [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste',
+            ],
+            'toolbar': 'styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | code preview',
+            'menubar': False,
+            'media_alt_source': False,
+            'media_poster': False,
+            'media_dimensions': False,
+        }
 
 Support
 -------
