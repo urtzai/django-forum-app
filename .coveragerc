@@ -1,0 +1,5 @@
+[report]
+include =
+    django_forum_app/*
+omit =
+    */test*

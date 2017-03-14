@@ -17,4 +17,5 @@ script:
   - python runtests.py
 
 after_success:
+  - pip install coveralls
   - coveralls
