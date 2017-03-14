@@ -22,41 +22,67 @@ Dependencies
 
 Installation
 ------------
-Clone this repository and add it to your INSTALLED_APPS list:
+Clone this repository and add it to your ``INSTALLED_APPS`` list:
+
+.. code-block:: python
 
     INSTALLED_APPS = [
-        ...
         'django_forum_app',
-        ...
     ]
 
 Then run migrations:
 
+.. code-block::
+
     ./manage.py migrate django_forums_app
 
-Finally, add this in urls.py:
+Finally, add this in ``urls.py``:
+
+.. code-block:: django
 
     url(r'^forum/', include('django_forum_app.urls')),
 
-Custom options
---------------
+Settings
+--------
 Ther are some option you could overrite to change the default behaviour of the forum:
 
-**FORUM_SUBJECT**
+``FORUM_SUBJECT``
+    Subject for email notifications
 
-Subject for email notifications
+    **Default:** ``FORUM``
 
-**POSTS_PER_PAGE**
+``POSTS_PER_PAGE``
+    Number of posts shown per page.
 
-Number of posts shown per page.
+    **Default:** ``10``
 
-**DJANGO_FORUM_APP_FILTER_PROFANE_WORDS**
+``DJANGO_FORUM_APP_FILTER_PROFANE_WORDS``
+    Attribute to filter profane words. Values should be *True*/*False*
 
-Attribute to filter profane words. Values should be *True*/*False*
+    **Default:** ``True``
 
-**TINYMCE_DEFAULT_CONFIG**
+``TINYMCE_DEFAULT_CONFIG``
+    Overriding this option you can change the tinymce editor behaviour.
 
-Overriding this option you can change the tinymce editor behaviour.
+    **Default:**
+
+    .. code-block:: python
+
+    TINYMCE_DEFAULT_CONFIG = {
+        "language": 'en',
+        "theme": "modern",
+        "height": 600,
+        "plugins": [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste",
+        ],
+        "toolbar": "styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | code preview",
+        "menubar": False,
+        "media_alt_source": False,
+        "media_poster": False,
+        "media_dimensions": False,
+    }
 
 Support
 -------
