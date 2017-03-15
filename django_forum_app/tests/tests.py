@@ -1,3 +1,4 @@
+import json
 from django.test import TestCase
 try:
     from django.core.urlresolvers import reverse
@@ -39,3 +40,18 @@ class BasicTest(TestCase):
         url = reverse('topic-detail', kwargs={'slug': "the-beatles", 'topic_id': 1})
         response = c.get(url)
         self.assertEqual(response.status_code, 200)
+
+    def test_new_topic_view(self):
+        c = Client()
+        c.login(username='john', password='johnpassword')
+        url = reverse('new-topic', kwargs={'slug': "the-beatles"})
+        response = c.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_new_topic_post(self):
+        c = Client()
+        c.login(username='john', password='johnpassword')
+        url = reverse('new-topic', kwargs={'slug': "the-beatles"})
+        response = c.post(url, {'title': "I don't like The Beatles", 'description': "It's the worst band of the history!"})
+        topic_url = reverse('topic-detail', kwargs={'slug': "the-beatles", 'topic_id': 2})
+        self.assertRedirects(response, topic_url)
