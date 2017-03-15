@@ -1,4 +1,4 @@
-{% load url from future %}
+{% load i18n %}
 
 <!-- Posts  -->
 <div class="ttitle">{{ topic.title }}</div>
@@ -18,17 +18,17 @@
 <div class="pagination">
     <span class="step-links">
         {% if posts.has_previous %}
-            <a href= "?page={{ posts.previous_page_number }}">previous &lt;&lt; </a>
+            <a href= "?page={{ posts.previous_page_number }}">{% trans 'previous &lt;&lt;' %} </a>
         {% endif %}
 
         <span class="current">
-            &nbsp;Page {{ posts.number }} of {{ topics.paginator.num_pages }}
+            &nbsp;{% trans 'Page' %} {{ posts.number }} of {{ topics.paginator.num_pages }}
         </span>
 
         {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}"> &gt;&gt; next</a>
+            <a href="?page={{ posts.next_page_number }}"> {% trans '&gt;&gt; next' %}</a>
         {% endif %}
     </span>
 </div>
 {% endif %}
-<a class="button" href="{% url 'reply' pk %}">Reply</a>
+<a class="button" href="{% url 'reply' pk %}">{% trans 'Reply' %}</a>

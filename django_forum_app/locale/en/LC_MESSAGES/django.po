@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-10 17:38+0100\n"
+"POT-Creation-Date: 2017-03-15 11:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,41 +17,82 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:13 forms.py:33
+#: forms.py:28 forms.py:48
 msgid "Your answer..."
 msgstr ""
 
-#: forms.py:22
+#: forms.py:37
 msgid "Title"
 msgstr ""
 
-#: forms.py:23
+#: forms.py:38
 msgid "First message"
 msgstr ""
 
-#: forms.py:24
+#: forms.py:39
 msgid "Write your answer here!"
 msgstr ""
 
-#: forms.py:32
+#: forms.py:47
 msgid "Body"
 msgstr ""
 
-#: forms.py:49
+#: forms.py:64
 #, python-format
 msgid "Bad words like '%s' are not allowed in posts."
 msgstr ""
 
-#: models.py:167
+#: models.py:171
 msgid ""
 "There is a new message on this forums you previously posted: \n"
 "\n"
 msgstr ""
 
-#: models.py:178
+#: models.py:182
 #, python-format
 msgid ""
 "New topic was created: \n"
 "\n"
-"%sadmin/django_forum_app/topic/%s"
+"http://%sadmin/django_forum_app/topic/%s"
+msgstr ""
+
+#: templates/django_forum_app/forum.html:11
+msgid "Topics"
+msgstr ""
+
+#: templates/django_forum_app/forum.html:12
+msgid "Replies"
+msgstr ""
+
+#: templates/django_forum_app/forum.html:13
+#: templates/django_forum_app/list.html:9
+msgid "Last post"
+msgstr ""
+
+#: templates/django_forum_app/forum.html:26
+#: templates/django_forum_app/list.html:21
+msgid "VIEW"
+msgstr ""
+
+#: templates/django_forum_app/forum.html:39
+#: templates/django_forum_app/topic.html:21
+msgid "previous &lt;&lt;"
+msgstr ""
+
+#: templates/django_forum_app/forum.html:43
+#: templates/django_forum_app/topic.html:25
+msgid "Page"
+msgstr ""
+
+#: templates/django_forum_app/forum.html:47
+#: templates/django_forum_app/topic.html:29
+msgid "&gt;&gt; next"
+msgstr ""
+
+#: templates/django_forum_app/list.html:8
+msgid "Posts"
+msgstr ""
+
+#: templates/django_forum_app/topic.html:34
+msgid "Reply"
 msgstr ""

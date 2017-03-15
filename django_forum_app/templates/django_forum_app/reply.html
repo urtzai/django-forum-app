@@ -1,7 +1,7 @@
-{% load url from future %}
+{% load i18n %}
 
 <form action="{% url 'reply' topic.id %}" method="POST">
-    {% csrf_token %} 
+    {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit" />
 </form>
