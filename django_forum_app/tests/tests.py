@@ -55,3 +55,19 @@ class BasicTest(TestCase):
         response = c.post(url, {'title': "I don't like The Beatles", 'description': "It's the worst band of the history!"})
         topic_url = reverse('topic-detail', kwargs={'slug': "the-beatles", 'topic_id': 2})
         self.assertRedirects(response, topic_url)
+
+    def test_close_topic_post(self):
+        c = Client()
+        c.login(username='john', password='johnpassword')
+        url = reverse('close-topic', kwargs={'slug': "the-beatles", "topic_id": 1})
+        response = c.get(url)
+        topic_url = reverse('topic-detail', kwargs={'slug': "the-beatles", 'topic_id': 1})
+        self.assertRedirects(response, topic_url)
+
+    def test_post_reply(self):
+        c = Client()
+        c.login(username='john', password='johnpassword')
+        url = reverse('reply', kwargs={'slug': "the-beatles", "topic_id": 1})
+        response = c.post(url, {'title': "I think you are wrong", 'body': "Not sure, but that's not the first album!"})
+        topic_url = reverse('topic-detail', kwargs={'slug': "the-beatles", 'topic_id': 1})
+        self.assertRedirects(response, topic_url)
