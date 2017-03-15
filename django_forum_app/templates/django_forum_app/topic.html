@@ -31,4 +31,4 @@
     </span>
 </div>
 {% endif %}
-<a class="button" href="{% url 'reply' pk %}">{% trans 'Reply' %}</a>
+<a class="button" href="{% url 'reply' forum.slug topic.pk %}">{% trans 'Reply' %}</a>

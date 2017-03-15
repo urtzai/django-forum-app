@@ -42,7 +42,7 @@ def topic(request, slug, topic_id):
 
     topic = Topic.objects.get(pk=topic_id)
     topic.sum_visits(user)
-    return render(request, "django_forum_app/topic.html", add_csrf(request, forum=forum, posts=posts, pk=topic_id, topic=topic))
+    return render(request, "django_forum_app/topic.html", add_csrf(request, forum=forum, posts=posts, topic=topic))
 
 
 @login_required
