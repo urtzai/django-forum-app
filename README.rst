@@ -4,10 +4,10 @@ Django-forum-app
 .. image:: https://api.travis-ci.org/urtzai/django-forum-app.svg?branch=master
     :target: https://travis-ci.org/urtzai/django-forum-app
 
-.. image:: https://coveralls.io/repos/github/urtzai/django-forum-app/badge.svg
-    :target: https://coveralls.io/github/urtzai/django-forum-app
+.. image:: https://coveralls.io/repos/github/urtzai/django-forum-app/badge.svg?branch=master
+    :target: https://coveralls.io/github/urtzai/django-forum-app?branch=master
 
-.. image:: https://landscape.io/github/urtzai/django-forum-app/master/landscape.svg
+.. image:: https://landscape.io/github/urtzai/django-forum-app/master/landscape.svg?style=flat
     :target: https://landscape.io/github/urtzai/django-forum-app
 
 .. image:: https://img.shields.io/badge/python-2.7-blue.svg
@@ -19,8 +19,8 @@ Django-forum-app
 .. image:: https://badge.fury.io/py/django-forum-app.svg
     :target: https://badge.fury.io/py/django-forum-app
 
-.. image:: https://requires.io/github/urtzai/django-forum-app/requirements.svg
-    :target: https://requires.io/github/urtzai/django-forum-app/requirements
+.. image:: https://requires.io/github/urtzai/django-forum-app/requirements.svg?branch=master
+    :target: https://requires.io/github/urtzai/django-forum-app/requirements?branch=master
 
 A very simple/minimalistic Django Forum app based on yoanisgil's `Django simple forum <https://github.com/yoanisgil/django-simple-forum>`_ project.
 
