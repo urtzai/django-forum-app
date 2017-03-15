@@ -11,6 +11,9 @@ try:
 except ImportError:  # django < 1.5
     from django.contrib.auth.models import User
 
+FORUM_SUBJECT = getattr(settings, 'FORUM_SUBJECT', "FORUM")
+POSTS_PER_PAGE = getattr(settings, 'POSTS_PER_PAGE', 10)
+
 
 class Category(models.Model):
     order = models.IntegerField()
@@ -137,7 +140,7 @@ class Post(models.Model):
         return Post.objects.filter(topic__id=self.topic_id).filter(created__lt=self.created).count()
 
     def get_page(self):
-        return self.get_post_num() / settings.POSTS_PER_PAGE + 1
+        return self.get_post_num() / POSTS_PER_PAGE + 1
 
     def short(self):
         return u"%s - %s\n%s" % (self.creator, self.title, self.created.strftime("%Y-%m-%d %H:%M"))
@@ -171,7 +174,7 @@ def send_post_email(sender, instance, **kwargs):
         creators = Post.objects.filter(topic=instance.topic).values('creator__email').annotate(n=Count("creator__id"))
         for creator in creators:
             if not instance.creator.email == creator['creator__email'] and instance.creator.email_notification:
-                send_mail('[' + settings.FORUM_SUBJECT + ' - ' + instance.topic.title + ']', message, settings.DEFAULT_FROM_EMAIL, [creator['creator__email']])
+                send_mail('[' + FORUM_SUBJECT + ' - ' + instance.topic.title + ']', message, settings.DEFAULT_FROM_EMAIL, [creator['creator__email']])
 
 
 def send_topic_email(sender, instance, **kwargs):
@@ -179,7 +182,7 @@ def send_topic_email(sender, instance, **kwargs):
         message = _('New topic was created: \n\nhttp://%sadmin/django_forum_app/topic/%s') % (Site.objects.get_current().domain, instance.id)
         for forum in instance.forums.all():
             creator = forum.creator
-            creator.email_user(subject='[' + settings.FORUM_SUBJECT + ' - ' + instance.title + ']', message=message, from_email=settings.DEFAULT_FROM_EMAIL)
+            creator.email_user(subject='[' + FORUM_SUBJECT + ' - ' + instance.title + ']', message=message, from_email=settings.DEFAULT_FROM_EMAIL)
 
 post_save.connect(send_topic_email, sender=Topic)
 post_save.connect(send_post_email, sender=Post)
