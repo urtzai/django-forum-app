@@ -16,7 +16,7 @@ settings.configure(
         }
     },
     USE_TZ=True,
-    ROOT_URLCONF='{0}.tests'.format(APP_NAME),
+    ROOT_URLCONF='{0}.urls'.format(APP_NAME),
     SITE_ID=1,
     INSTALLED_APPS=(
         'django.contrib.auth',
