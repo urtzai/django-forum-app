@@ -22,8 +22,20 @@ class BasicTest(TestCase):
         topic.save()
         Post.objects.create(title="My opinion", creator=user, topic=topic, body="I think is Please Please Me")
 
-    def test_forum_index(self):
+    def test_forum_index_view(self):
         c = Client()
         url = reverse('forum-index')
+        response = c.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_forum_detail_view(self):
+        c = Client()
+        url = reverse('forum-detail', kwargs={'slug': "the-beatles"})
+        response = c.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_topic_detail_view(self):
+        c = Client()
+        url = reverse('topic-detail', kwargs={'slug': "the-beatles", 'topic_id': 1})
         response = c.get(url)
         self.assertEqual(response.status_code, 200)
