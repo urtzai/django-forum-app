@@ -1,33 +1,39 @@
 Django-forum-app
 ================
-
 .. image:: https://api.travis-ci.org/urtzai/django-forum-app.svg?branch=master
     :target: https://travis-ci.org/urtzai/django-forum-app
+    :alt: Travis CI
 
 .. image:: https://coveralls.io/repos/github/urtzai/django-forum-app/badge.svg?branch=master
     :target: https://coveralls.io/github/urtzai/django-forum-app?branch=master
+    :alt: Test coverage
 
 .. image:: https://landscape.io/github/urtzai/django-forum-app/master/landscape.svg?style=flat
     :target: https://landscape.io/github/urtzai/django-forum-app
+    :alt: Code health
 
 .. image:: https://img.shields.io/badge/python-2.7-blue.svg
     :target: https://badge.fury.io/py/django-forum-app
+    :alt: Latest Python 2 version
 
 .. image:: https://img.shields.io/badge/python-3.5-blue.svg
     :target: https://badge.fury.io/py/django-forum-app
+    :alt: Latest Python 3 version
 
 .. image:: https://badge.fury.io/py/django-forum-app.svg
     :target: https://badge.fury.io/py/django-forum-app
+    :alt: Latest PyPI version
 
 .. image:: https://requires.io/github/urtzai/django-forum-app/requirements.svg?branch=master
     :target: https://requires.io/github/urtzai/django-forum-app/requirements?branch=master
+    :alt: Package requirements
+    
 
 A very simple/minimalistic Django Forum app based on yoanisgil's `Django simple forum <https://github.com/yoanisgil/django-simple-forum>`_ project.
 
 Example
 -------
 A `production example <http://gamerauntsia.eus/foroa/>`_ of this forum app courtesy of Game Erauntsia, basque gamer community
-
 
 Dependencies
 ------------
