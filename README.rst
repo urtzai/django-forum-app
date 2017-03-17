@@ -1,5 +1,6 @@
 Django-forum-app
 ================
+
 .. image:: https://api.travis-ci.org/urtzai/django-forum-app.svg?branch=master
     :target: https://travis-ci.org/urtzai/django-forum-app
     :alt: Travis CI
@@ -32,16 +33,19 @@ A very simple/minimalistic Django Forum app based on yoanisgil's `Django simple 
 
 Example
 -------
+
 A `production example <http://gamerauntsia.eus/foroa/>`_ of this forum app courtesy of Game Erauntsia, basque gamer community
 
 Dependencies
 ------------
+
 - Django >= 1.8
 - django-photologue >= 3.6
 - django-tinymce >= 2.6.0
 
 Installation
 ------------
+
 Clone this repository and add it to your ``INSTALLED_APPS`` list:
 
 .. code-block:: python
@@ -64,6 +68,7 @@ Finally, add this in ``urls.py``:
 
 Settings
 --------
+
 Ther are some option you could overrite to change the default behaviour of the forum:
 
 ``FORUM_SUBJECT``
@@ -106,9 +111,11 @@ Ther are some option you could overrite to change the default behaviour of the f
 
 Support
 -------
+
 Should you experience any issues do not hesistate to post an issue or contribute in this project pulling requests.
 
 Travis CI status
 ----------------
+
 We use Travis to check that the unit test suite is working against various combinations of Python, Django, etc...
 `Click here for the full report <http://travis-ci.org/#!/urtzai/django-forum-app>`_.
