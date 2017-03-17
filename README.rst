@@ -28,7 +28,6 @@ Django-forum-app
     :target: https://requires.io/github/urtzai/django-forum-app/requirements?branch=master
     :alt: Package requirements
     
-
 A very simple/minimalistic Django Forum app based on yoanisgil's `Django simple forum <https://github.com/yoanisgil/django-simple-forum>`_ project.
 
 Example
