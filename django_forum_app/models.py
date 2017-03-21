@@ -149,7 +149,7 @@ class Post(models.Model):
         return u"%s: %s" % (self.creator, self.created.strftime("%Y-%m-%d %H:%M"))
 
     def get_absolute_url(self):
-        return u'/%s/?page=%d#%d' % (self.topic.id, self.get_page(), self.id)
+        return u'/%s?page=%d#%d' % (self.topic.id, self.get_page(), self.id)
 
     def save(self, *args, **kwargs):
         self.topic.user_lst = str(self.creator.id)
