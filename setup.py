@@ -24,7 +24,7 @@ setup(
     author='Urtzi Odriozola',
     author_email='urtzi.odriozola@gmail.com',
     url='https://github.com/urtzai/django-forum-app',
-    license='cc-by-sa',
+    license='GPLv3',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
