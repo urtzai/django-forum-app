@@ -1,7 +1,7 @@
-# Django forum app
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Urtzi Odriozola <uodriozola@codesyntax.com>, 2017.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
@@ -16,26 +16,27 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:28 forms.py:48
 msgid "Your answer..."
-msgstr ""
+msgstr "Tu respuesta..."
 
 #: forms.py:37
 msgid "Title"
-msgstr ""
+msgstr "Titulo"
 
 #: forms.py:38
 msgid "First message"
-msgstr ""
+msgstr "Primer mensaje"
 
 #: forms.py:39
 msgid "Write your answer here!"
-msgstr ""
+msgstr "¡Escribe tu respueta aquí!"
 
 #: forms.py:47
 msgid "Body"
-msgstr ""
+msgstr "Texto"
 
 #: forms.py:64
 #, python-format
@@ -47,6 +48,8 @@ msgid ""
 "There is a new message on this forums you previously posted: \n"
 "\n"
 msgstr ""
+"Hay un nuevo mensaje en este foro que anteriormente escribiste: \n"
+"\n"
 
 #: models.py:182
 #, python-format
@@ -55,48 +58,51 @@ msgid ""
 "\n"
 "http://%sadmin/django_forum_app/topic/%s"
 msgstr ""
+"Nuevo tema creado: \n"
+"\n"
+"http://%sadmin/django_forum_app/topic/%s"
 
 #: templates/django_forum_app/forum.html:4
 msgid "Start New Topic"
-msgstr ""
+msgstr "Crear nuevo tema"
 
 #: templates/django_forum_app/forum.html:11
 msgid "Topics"
-msgstr ""
+msgstr "Temas"
 
 #: templates/django_forum_app/forum.html:12
 msgid "Replies"
-msgstr ""
+msgstr "Respuestas"
 
 #: templates/django_forum_app/forum.html:13
 #: templates/django_forum_app/list.html:9
 msgid "Last post"
-msgstr ""
+msgstr "Último mensaje"
 
 #: templates/django_forum_app/forum.html:26
 #: templates/django_forum_app/list.html:21
 msgid "VIEW"
-msgstr ""
+msgstr "IKUSI"
 
 #: templates/django_forum_app/forum.html:39
 #: templates/django_forum_app/topic.html:21
 msgid "previous &lt;&lt;"
-msgstr ""
+msgstr "anterior &lt;&lt;"
 
 #: templates/django_forum_app/forum.html:43
 #: templates/django_forum_app/topic.html:25
 msgid "Page"
-msgstr ""
+msgstr "Página"
 
 #: templates/django_forum_app/forum.html:47
 #: templates/django_forum_app/topic.html:29
 msgid "&gt;&gt; next"
-msgstr ""
+msgstr "&gt;&gt; siguiente"
 
 #: templates/django_forum_app/list.html:8
 msgid "Posts"
-msgstr ""
+msgstr "Mensajes"
 
 #: templates/django_forum_app/topic.html:34
 msgid "Reply"
-msgstr ""
+msgstr "Responder"
