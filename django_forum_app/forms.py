@@ -45,9 +45,7 @@ class TopicForm(forms.ModelForm):
 
 class PostForm(forms.ModelForm):
     body = forms.CharField(label=_('Body'), widget=TinyMCE(
-        attrs={'cols': 80, 'rows': 30, 'class': 'my_tinymce', 'placeholder': _("Your answer...")},
-        mce_attrs=TINYMCE_DEFAULT_CONFIG,
-    ))
+        attrs={'cols': 80, 'rows': 30, 'placeholder': _("Your answer...")}, mce_attrs=TINYMCE_DEFAULT_CONFIG))
 
     class Meta():
         model = Post

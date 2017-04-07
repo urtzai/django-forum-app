@@ -124,7 +124,7 @@ class Topic(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=60, verbose_name="Izenburua")
+    title = models.CharField(max_length=60, verbose_name=_("Title"))
     created = models.DateTimeField(auto_now_add=True)
     creator = models.ForeignKey(User, blank=True, null=True, related_name="%(class)s_posts")
     updated = models.DateTimeField(auto_now=True)
