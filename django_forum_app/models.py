@@ -173,7 +173,7 @@ def send_post_email(sender, instance, **kwargs):
             message += 'http://%sforum/%s%s\n\n' % (Site.objects.get_current().domain, forum.slug, instance.get_absolute_url())
         creators = Post.objects.filter(topic=instance.topic).values('creator__email').annotate(n=Count("creator__id"))
         for creator in creators:
-            if not instance.creator.email == creator['creator__email'] and instance.creator.email_notification:
+            if not instance.creator.email == creator['creator__email']:
                 send_mail('[' + FORUM_SUBJECT + ' - ' + instance.topic.title + ']', message, settings.DEFAULT_FROM_EMAIL, [creator['creator__email']])
 
 
