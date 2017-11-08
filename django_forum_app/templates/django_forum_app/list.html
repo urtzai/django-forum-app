@@ -1,15 +1,20 @@
 {% load i18n %}
+{% load forum_tags %}
 
 <!-- Forums  -->
 <div id="list">
+    {% for cat in categories %}
+    <h2>{{cat.title}}</h2>
+    
     <table border="0" cellpadding="4" width="100%">
         <tr>
             <td></td>
             <td>{% trans 'Posts' %}</td>
             <td>{% trans 'Last post' %}</td>
+            <td>{% trans 'Visits' %}</td>
             <td></td>
         </tr>
-        {% for forum in forums %}
+        {% for forum in cat.get_forums %}
             <tr>
                 <td {% if forloop.last %}class="last"{% endif %}>
                     <div class="title"> <a href="{% url 'forum-detail' forum.pk %}">{{ forum.title }}</a></div>
@@ -17,9 +22,13 @@
                 <td {% if forloop.last %}class="last"{% endif %}>{{ forum.num_posts }}</td>
                 <td {% if forloop.last %}class="last"{% endif %}>
                     {{ forum.last_post.short|linebreaksbr }}</td>
-                <td {% if forloop.last %}class="last"{% endif %}>
-                    <a class="button" href="{% url 'forum-detail' forum.pk %}">{% trans 'VIEW' %}</a>
+                <td {% if forloop.last %}class="last"{% endif %}>{{forum.get_visits}}</td>
+                <td>
+                    {% if not forum|check_seen:user %}
+                        <strong class="text-success"><span aria-hidden="true" class="glyphicon glyphicon-star-empty"></span> {% trans 'NEW' %}</strong>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}
+    </table>
 </div>
