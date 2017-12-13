@@ -39,7 +39,7 @@ A `production example <http://gamerauntsia.eus/foroa/>`_ of this forum app court
 Dependencies
 ------------
 
-- Django >= 1.8
+- Django >= 1.10.0
 - django-photologue >= 3.6
 - django-tinymce >= 2.6.0
 
