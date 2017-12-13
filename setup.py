@@ -11,7 +11,7 @@ def get_requirements(source):
     except TypeError:
         # Older version of pip.
         install_reqs = parse_requirements(source)
-    required = set([str(ir.req) for ir in install_reqs])
+    required = [str(ir.req) for ir in install_reqs]
     return required
 
 
