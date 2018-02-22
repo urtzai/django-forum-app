@@ -58,7 +58,7 @@ Then run migrations:
 
 .. code-block::
 
-    ./manage.py migrate django_forums_app
+    ./manage.py migrate django_forum_app
 
 Finally, add this in ``urls.py``:
 
