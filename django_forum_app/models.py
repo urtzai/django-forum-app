@@ -170,7 +170,7 @@ def send_post_email(sender, instance, **kwargs):
     if kwargs['created']:
         message = _('There is a new message on this forums you previously posted: \n\n')
         for forum in instance.topic.forums.all():
-            message += 'http://%sforum/%s%s\n\n' % (Site.objects.get_current().domain, forum.slug, instance.get_absolute_url())
+            message += 'http://%s/forum/%s%s\n\n' % (Site.objects.get_current().domain, forum.slug, instance.get_absolute_url())
         creators = Post.objects.filter(topic=instance.topic).values('creator__email').annotate(n=Count("creator__id"))
         for creator in creators:
             if not instance.creator.email == creator['creator__email']:
