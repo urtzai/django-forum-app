@@ -12,7 +12,7 @@ env:
 matrix:
   exclude:
     - python: "2.7"
-    - env: DJANGO="Django>=2.0.0,<2.1.0"
+      env: DJANGO="Django>=2.0.0,<2.1.0"
 
 install:
   - pip install -q $DJANGO
