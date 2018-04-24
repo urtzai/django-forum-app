@@ -1,0 +1,7 @@
+{% load i18n %}
+
+{% trans 'There is a new message on this forums you previously posted: \n\n' %}
+
+{% for forum in forums %}
+http://{{domain}}/forum/{{forum.slug}}{{url}}\n\n
+{% endfor %}

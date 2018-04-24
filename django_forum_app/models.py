@@ -1,19 +1,13 @@
 from django.db import models
 from django.conf import settings
-from django.db.models import Count
-from django.core.mail import send_mail
-from django.db.models.signals import post_save
 from photologue.models import Photo
-from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 try:
     User = settings.AUTH_USER_MODEL
 except ImportError:  # django < 1.5
     from django.contrib.auth.models import User
 
-FORUM_SUBJECT = getattr(settings, 'FORUM_SUBJECT', "FORUM")
 POSTS_PER_PAGE = getattr(settings, 'POSTS_PER_PAGE', 10)
-
 
 class Category(models.Model):
     order = models.IntegerField()
@@ -164,25 +158,3 @@ class ProfaneWord(models.Model):
 
     def __unicode__(self):
         return self.word
-
-
-def send_post_email(sender, instance, **kwargs):
-    if kwargs['created']:
-        message = _('There is a new message on this forums you previously posted: \n\n')
-        for forum in instance.topic.forums.all():
-            message += 'http://%s/forum/%s%s\n\n' % (Site.objects.get_current().domain, forum.slug, instance.get_absolute_url())
-        creators = Post.objects.filter(topic=instance.topic).values('creator__email').annotate(n=Count("creator__id"))
-        for creator in creators:
-            if not instance.creator.email == creator['creator__email']:
-                send_mail('[' + FORUM_SUBJECT + ' - ' + instance.topic.title + ']', message, settings.DEFAULT_FROM_EMAIL, [creator['creator__email']])
-
-
-def send_topic_email(sender, instance, **kwargs):
-    if kwargs['created']:
-        message = _('New topic was created: \n\nhttp://%sadmin/django_forum_app/topic/%s') % (Site.objects.get_current().domain, instance.id)
-        for forum in instance.forums.all():
-            creator = forum.creator
-            creator.email_user(subject='[' + FORUM_SUBJECT + ' - ' + instance.title + ']', message=message, from_email=settings.DEFAULT_FROM_EMAIL)
-
-post_save.connect(send_topic_email, sender=Topic)
-post_save.connect(send_post_email, sender=Post)

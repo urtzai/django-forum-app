@@ -1,0 +1,5 @@
+{% load i18n %}
+
+{% trans 'New topic was created: \n\n' %}
+
+http://{{domain}}/admin/django_forum_app/topic/{{id}}
