@@ -15,7 +15,7 @@ def get_requirements(source):
     return required
 
 
-version = '0.8'
+version = '0.9.dev0'
 
 setup(
     name='django_forum_app',
