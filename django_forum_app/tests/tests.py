@@ -11,6 +11,7 @@ try:
     User = get_user_model()
 except ImportError:  # django < 1.5
     from django.contrib.auth.models import User
+from django.core.mail import outbox
 
 
 class BasicTest(TestCase):
@@ -55,6 +56,7 @@ class BasicTest(TestCase):
         response = c.post(url, {'title': "I don't like The Beatles", 'description': "It's the worst band of the history!"})
         topic_url = reverse('topic-detail', kwargs={'slug': "the-beatles", 'topic_id': 2})
         self.assertRedirects(response, topic_url)
+        self.assertEqual(len(outbox), 1)
 
     def test_close_topic_post(self):
         c = Client()
@@ -71,3 +73,4 @@ class BasicTest(TestCase):
         response = c.post(url, {'title': "I think you are wrong", 'body': "Not sure, but that's not the first album!"})
         topic_url = reverse('topic-detail', kwargs={'slug': "the-beatles", 'topic_id': 1})
         self.assertRedirects(response, topic_url)
+        self.assertEqual(len(outbox), 1)
