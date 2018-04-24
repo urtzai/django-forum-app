@@ -28,7 +28,7 @@ class Forum(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    creator = models.ForeignKey(User, blank=True, null=True)
+    creator = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
     def __unicode__(self):
         return self.title
