@@ -30,9 +30,9 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(default=b'', blank=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
                 ('created', models.DateTimeField(auto_now_add=True)),
-                ('category', models.ForeignKey(to='django_forum_app.Category')),
-                ('creator', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
-                ('icon', models.ForeignKey(blank=True, to='photologue.Photo', null=True)),
+                ('category', models.ForeignKey(to='django_forum_app.Category', on_delete=models.CASCADE)),
+                ('creator', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)),
+                ('icon', models.ForeignKey(blank=True, to='photologue.Photo', null=True, on_delete=models.CASCADE)),
             ],
         ),
         migrations.CreateModel(
@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                 ('body', models.TextField(max_length=10000)),
                 ('user_ip', models.GenericIPAddressField(null=True, blank=True)),
                 ('telegram_id', models.CharField(max_length=20, null=True, blank=True)),
-                ('creator', models.ForeignKey(related_name='post_posts', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
+                ('creator', models.ForeignKey(related_name='post_posts', blank=True, to=settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)),
             ],
         ),
         migrations.CreateModel(
@@ -67,13 +67,13 @@ class Migration(migrations.Migration):
                 ('closed', models.BooleanField(default=False)),
                 ('visits', models.IntegerField(default=0)),
                 ('user_lst', models.TextField(null=True, blank=True)),
-                ('creator', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
+                ('creator', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)),
                 ('forums', models.ManyToManyField(to='django_forum_app.Forum')),
             ],
         ),
         migrations.AddField(
             model_name='post',
             name='topic',
-            field=models.ForeignKey(to='django_forum_app.Topic'),
+            field=models.ForeignKey(to='django_forum_app.Topic', on_delete=models.CASCADE),
         ),
     ]
