@@ -1,6 +1,9 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except:
+    from django.urls import reverse
 from django.template.context_processors import csrf
 from django_forum_app.models import Category, Forum, Topic, Post
 from django_forum_app.forms import TopicForm, PostForm
