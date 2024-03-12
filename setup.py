@@ -10,12 +10,15 @@ except ImportError: # for pip <= 9.0.3
 
 def get_requirements(source):
     try:
-        install_reqs = parse_requirements(source, session=uuid.uuid1())
+        install_reqs = parse_requirements(source, session=False)
     except TypeError:
         # Older version of pip.
         install_reqs = parse_requirements(source)
-    required = sorted(set([str(ir.req) for ir in install_reqs]))
-    return list(required)
+    try:
+        requirements = [str(ir.req) for ir in install_reqs]
+    except:
+        requirements = [str(ir.requirement) for ir in install_reqs]
+    return list(requirements)
 
 
 

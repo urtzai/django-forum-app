@@ -1,7 +1,7 @@
 from django import forms
 from django_forum_app.models import Topic, Post, ProfaneWord
 from tinymce.widgets import TinyMCE
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.conf import settings
 
 TINYMCE_DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', {

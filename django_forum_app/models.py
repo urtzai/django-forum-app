@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
-from photologue.models import Photo
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 try:
     User = settings.AUTH_USER_MODEL
 except ImportError:  # django < 1.5
@@ -24,6 +23,7 @@ class Forum(models.Model):
     title = models.CharField(max_length=60)
     slug = slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, default='')
+    from photologue.models import Photo
     icon = models.ForeignKey(Photo, null=True, blank=True, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     updated = models.DateTimeField(auto_now=True)
