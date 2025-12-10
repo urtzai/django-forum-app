@@ -1,3 +1,7 @@
+**⚠️ PROJECT MIGRATED TO CODEBERG ⚠️:**
+
+https://codeberg.org/codesyntax/django-forum-app  
+
 Django-forum-app
 ================
 
